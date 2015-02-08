@@ -2,10 +2,13 @@ doctype html
 html
   head
     title
-      = yield :title
-      |  | Ruby on Rails Tutorial Sample App
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+      = full_title yield(:title)
+    = stylesheet_link_tag 'application', media: 'all',
+                                          'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    / 'data-turbolinks-track' => true,
+    / 之所以没有写成 data-turbolinks-track: true,
+    / 是因为符号不能有连接符
     = csrf_meta_tags
 
   body
