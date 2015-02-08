@@ -1,0 +1,19 @@
+{
+  "name": "sample_app",
+  "version": "0.0.0",
+  "authors": [
+    "lixu19941116 <lixu19941116@foxmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "/vendor/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}

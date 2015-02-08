@@ -10,6 +10,10 @@ html
     / 之所以没有写成 data-turbolinks-track: true,
     / 是因为符号不能有连接符
     = csrf_meta_tags
+    = render 'layouts/shim'
 
-  body
-    = yield
+  body class=page_identifier
+    = render 'layouts/header'
+    .container
+      = yield
+      = render 'layouts/footer'
