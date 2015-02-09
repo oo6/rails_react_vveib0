@@ -4,6 +4,8 @@ gem 'rails', '4.2.0'
 
 gem 'pg', '0.18.1'
 
+gem 'bcrypt', '3.1.9'
+
 gem 'slim-rails', '3.0.1'
 
 gem 'sass-rails', '5.0.1'
