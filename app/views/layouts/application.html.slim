@@ -15,5 +15,10 @@ html
   body class=page_identifier
     = render 'layouts/header'
     .container
+      - flash.each do |message_type, message|
+        .alert class="alert-#{message_type}"
+          = message
       = yield
       = render 'layouts/footer'
+      
+      = debug(params) if Rails.env.development?
