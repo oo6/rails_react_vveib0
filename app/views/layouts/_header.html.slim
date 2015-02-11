@@ -7,5 +7,21 @@ header.navbar.navbar-fixed-top.navbar-inverse
           a href=root_path Home
         li
           a href=help_path Help
-        li
-          a href="#" Login
+        - if logged_in?
+          li
+            a href="#" Users
+          li.dropdown
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              = current_user.name
+              b.caret
+            ul.dropdown-menu
+              li
+                a href=user_path(current_user) Profile
+              li
+                a href="#" Settings
+              li.divider
+              li
+                a href=logout_path data-method='delete' Log out
+        - else
+          li
+            a href=login_path Login

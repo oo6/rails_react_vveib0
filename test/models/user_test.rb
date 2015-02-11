@@ -67,4 +67,8 @@ class UserTest < ActiveSupport::TestCase
     # 值是长度为 5 的字符串, 使用字符串连乘创建    
     assert_not @user.valid?
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end
