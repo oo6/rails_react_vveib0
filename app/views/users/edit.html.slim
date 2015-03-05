@@ -1,0 +1,26 @@
+= provide :title, 'Edit User'
+
+h1 Update your profile
+
+.row
+  .col-md-4.col-md-offset-4
+    = form_for @user do |f|
+      = render 'shared/error_messages'
+
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+
+      = f.label :email
+      = f.text_field :email, class: 'form-control'
+
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+
+      = f.label :passworld_confirmation, "Confirmation"
+      = f.password_field :password_confirmation, class: 'form-control'
+
+      = f.submit "Save changes", class: "btn btn-primary"
+
+    .gravatar_edit
+      img.gravatar src=portrait_url(@user) alt=@user.name
+      a href="http://gravatar.com/emails" target="_blank" change

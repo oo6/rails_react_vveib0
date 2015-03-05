@@ -9,7 +9,7 @@ header.navbar.navbar-fixed-top.navbar-inverse
           a href=help_path Help
         - if logged_in?
           li
-            a href="#" Users
+            a href=users_path Users
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"
               = current_user.name
@@ -18,7 +18,7 @@ header.navbar.navbar-fixed-top.navbar-inverse
               li
                 a href=user_path(current_user) Profile
               li
-                a href="#" Settings
+                a href=edit_user_path(current_user) Settings
               li.divider
               li
                 a href=logout_path data-method='delete' Log out

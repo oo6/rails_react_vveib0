@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                                     format: { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
   # uniqueness: { case_sensitive: false }, 唯一, 不区分大小写
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
   
   has_secure_password
 
