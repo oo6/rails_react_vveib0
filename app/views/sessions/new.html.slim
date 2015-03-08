@@ -7,6 +7,9 @@
       = f.text_field :email, class: 'form-control'
 
       = f.label :password
+      |  (
+      a href=new_password_reset_path Forgot Password
+      | )
       = f.password_field :password, class: 'form-control'
 
       = f.label :remember_me, class: "checkbox inline" do
