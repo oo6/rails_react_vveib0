@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.2",
-    "nprogress": "~0.1.6"
+    "nprogress": "~0.1.6",
+    "sweetalert": "~0.4.2"
   }
 }

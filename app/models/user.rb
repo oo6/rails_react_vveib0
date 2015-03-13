@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
-
 
   validates :name, presence: true, length: { maximum: 50, minimum: 6 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -72,6 +73,10 @@ class User < ActiveRecord::Base
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
     # 应该理解为密码重设邮件发出超过两个小时
+  end
+
+  def feed
+    Micropost.where('user_id = ?', id)
   end
 
   private

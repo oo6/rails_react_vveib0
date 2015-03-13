@@ -1,0 +1,10 @@
+img.gravatar src=portrait_url(current_user) alt=current_user.name
+h1
+  = current_user.name
+span
+  a href=user_path(current_user) view my profile
+
+br
+
+span
+  = pluralize(current_user.microposts.count, "micropost")
