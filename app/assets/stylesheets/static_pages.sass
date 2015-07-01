@@ -1,2 +1,12 @@
 .staticpages
-  @import "pages/static_pages/home"
+  &.home
+    @import "pages/static_pages/home"
+  
+  &.about
+    @import "pages/static_pages/about"
+
+  &.contact
+    @import "pages/static_pages/contact"
+
+  &.help
+    @import "pages/static_pages/help"
