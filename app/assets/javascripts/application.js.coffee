@@ -8,6 +8,7 @@
 
 #= require_tree .
 
+NProgress.configure({ showSpinner: false })
 $(document).on 'page:fetch', ->
   NProgress.start()
 $(document).on 'page:change', ->

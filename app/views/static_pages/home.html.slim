@@ -11,13 +11,8 @@
       h3 Micropost Feed
       = render 'shared/feed'
 - else
-  .center.jumbotron
-    h1 Welcome to the Sample App
+  .center
+    h1 欢迎来到微博
     p
-      | This is the home page for the 
-      a href="http://www.railstutorial.org/" Ruby on Rails Tutorial
-      |  sample application.
-    a.btn.btn-lg.btn-primary href=signup_path Sign up Now!
-
-  a href="http://rubyonrails.org/"
-    img src="/assets/rails.png" alt="Rails logo"
+      | 还没有微博账号？现在加入
+      a.btn.btn-lg.btn-primary href=signup_path 立即注册

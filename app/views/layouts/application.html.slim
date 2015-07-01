@@ -19,6 +19,4 @@ html
         .alert class="alert-#{message_type}"
           = message
       = yield
-      = render 'layouts/footer'
-      
-      = debug(params) if Rails.env.development?
+    = render 'layouts/footer'

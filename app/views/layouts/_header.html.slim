@@ -1,27 +1,33 @@
-header.navbar.navbar-fixed-top.navbar-inverse
-  .container
-    a#logo href=root_path Sample App
-    nav
-      ul.nav.navbar-nav.pull-right
+.navbar.navbar-fixed-top.header-wrap
+  header
+    a.navbar-brand.logo href=root_path
+      i.fa.fa-weibo
+      | 微博
+    ul.nav.navbar-nav.navbar-right
+      - if logged_in?
         li
-          a href=root_path Home
+          a href=root_path 
+            i.fa.fa-home
+            | 首页
         li
-          a href=help_path Help
-        - if logged_in?
-          li
-            a href=users_path Users
-          li.dropdown
-            a.dropdown-toggle href="#" data-toggle="dropdown"
-              = current_user.name
-              b.caret
-            ul.dropdown-menu
-              li
-                a href=user_path(current_user) Profile
-              li
-                a href=edit_user_path(current_user) Settings
-              li.divider
-              li
-                a href=logout_path data-method='delete' Log out
-        - else
-          li
-            a href=login_path Login
+          a href=users_path
+            i.fa.fa-compass
+            | 发现
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown"
+            i.fa.fa-user
+            = current_user.name
+            b.caret
+          ul.dropdown-menu
+            li
+              a href=user_path(current_user) 个人资料
+            li
+              a href=edit_user_path(current_user) 设置
+            li.divider
+            li
+              a href=logout_path data-method='delete' 退出
+      - else
+        li
+          a href=signup_path 注册
+        li
+          a href=login_path 登录
