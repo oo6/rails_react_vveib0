@@ -2,7 +2,6 @@
   &.home
     /* forms */
     input, textarea, select, .uneditable-input
-      border: 1px solid #bbb
       width: 100%
       margin-bottom: 15px
     input
@@ -23,6 +22,24 @@
           margin-right: 10px
         .gravatar_edit
           margin-top: 15px
+      .stats
+        overflow: auto
+        margin-top: 0
+        padding: 0
+        a
+          float: left
+          padding: 0 10px
+          border-left: 1px solid #777
+          color: gray
+          &:first-child
+            padding-left: 0
+            border: 0
+          &:hover
+            text-decoration: none
+            color: blue
+          strong
+            display: block
+
     .microposts
       list-style: none
       padding: 0
@@ -45,3 +62,4 @@
         top: -10px
         margin-right: 20px
         margin-left: 10px
+        

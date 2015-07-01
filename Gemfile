@@ -37,7 +37,7 @@ group :development do
 
   gem 'web-console', '2.0.0'
 
-  gem 'spring', '1.3.0'
+  gem 'spring', '1.3.4'
 
   gem 'pry-rails', '0.3.2'
 end
