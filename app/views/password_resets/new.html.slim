@@ -1,11 +1,13 @@
-= provide :title, "Forget Password"
+= provide :title, "找回密码"
 
-h1 Forget Password
+.col-md-4.col-md-offset-4
+  .password-reset-panel.panel.panel-info
+    .panel-heading
+      h3.title 找回密码
+    .panel-body
+      = form_for :password_reset, url: password_resets_path do |f|
+        .form-group
+          = f.label :邮箱
+          = f.text_field :email, class: 'form-control'
 
-.row
-  .col-md-4.col-md-offset-4
-    = form_for :password_reset, url: password_resets_path do |f|
-      = f.label :email
-      = f.text_field :email, class: 'form-control'
-
-      = f.submit "Submit", class: "btn btn-primary"
+        = f.submit "确定", class: "btn btn-success"

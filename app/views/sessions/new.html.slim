@@ -1,23 +1,29 @@
-= provide :title, 'Log in'
+= provide :title, '登录'
 
-.row
-  .col-md-4.col-md-offset-4
-    = form_for :session, url: login_path do |f|
-      = f.label :email
-      = f.text_field :email, class: 'form-control'
+.col-md-4.col-md-offset-4
+  .login-panel.panel.panel-info
+    .panel-heading
+      h3.title 登录
+    .panel-body
+      = form_for :session, url: login_path do |f|
+        .form-group
+          = f.label :邮箱
+          = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :密码
+          |  (
+          a href=new_password_reset_path 忘记密码
+          | )
+          = f.password_field :password, class: 'form-control'
+        .checkbox
+          = f.label :remember_me, class: "checkbox inline" do
+            = f.check_box :remember_me
+            span 记住我
 
-      = f.label :password
-      |  (
-      a href=new_password_reset_path Forgot Password
-      | )
-      = f.password_field :password, class: 'form-control'
+        = f.submit "登录", class: "btn btn-success"
 
-      = f.label :remember_me, class: "checkbox inline" do
-        = f.check_box :remember_me
-        span Remember me on this computer
-
-      = f.submit "Login", class: "btn btn-primary"
-
-    p
-      | New User? 
-      a href=signup_path Sign up Now!
+      p.tips
+        | 还没有微博？ 
+        a href=signup_path
+          | 立即注册
+        | ！

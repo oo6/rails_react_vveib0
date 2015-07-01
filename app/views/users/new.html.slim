@@ -1,20 +1,27 @@
-= provide :title, 'Sign Up'
+= provide :title, '注册'
 
-.row
-  .col-md-4.col-md-offset-4
-    = form_for @user do |f|
-      = render 'shared/error_messages', object: f.object
+.col-md-4.col-md-offset-4
+  .sign-up-panel.panel.panel-info
+    .panel-heading
+      h3.title 注册
+    .panel-body
+      = form_for @user do |f|
+        = render 'shared/error_messages', object: f.object
+        .form-group
+          = f.label :昵称
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :邮箱
+          = f.text_field :email, class: 'form-control'
+        .form-group
+          = f.label :密码
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.label :password_confirmation, "密码确认"
+          = f.password_field :password_confirmation, class: 'form-control'
+        
+        = f.submit "立即注册", class: "btn btn-success"
 
-      = f.label :name
-      = f.text_field :name, class: 'form-control'
-
-      = f.label :email
-      = f.text_field :email, class: 'form-control'
-
-      = f.label :password
-      = f.password_field :password, class: 'form-control'
-
-      = f.label :password_confirmation, "Confirmation"
-      = f.password_field :password_confirmation, class: 'form-control'
-      
-      = f.submit "Create my account", class: "btn btn-primary"
+      p.tips
+        | 已有账号， 
+        a href=login_path 直接登录>>

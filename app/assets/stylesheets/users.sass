@@ -1,4 +1,7 @@
 .users
+  &.new, &.create
+    @import "pages/users/new"
+    
   &.show, &.followers
     /* sidebar */
     aside
@@ -55,15 +58,6 @@
         top: -10px
         margin-right: 20px
         margin-left: 10px
-
-  &.new, &.create
-    /* forms */
-    input, textarea, select, .uneditable-input
-      border: 1px solid #bbb
-      width: 100%
-      margin-bottom: 15px
-    input
-      height: auto !important
 
   &.edit, &.update
     .gravatar
