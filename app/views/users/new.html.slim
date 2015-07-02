@@ -8,13 +8,13 @@
       = form_for @user do |f|
         = render 'shared/error_messages', object: f.object
         .form-group
-          = f.label :昵称
+          = f.label :name, '昵称'
           = f.text_field :name, class: 'form-control'
         .form-group
-          = f.label :邮箱
+          = f.label :email, '邮箱'
           = f.text_field :email, class: 'form-control'
         .form-group
-          = f.label :密码
+          = f.label :password, '密码'
           = f.password_field :password, class: 'form-control'
         .form-group
           = f.label :password_confirmation, "密码确认"

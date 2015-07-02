@@ -1,18 +1,20 @@
-= provide :title, "Reset Password"
+= provide :title, "重置密码"
 
-h1 Reset Password
+.col-md-4.col-md-offset-4
+  .reset-password-panel.panel.panel-info
+    .panel-heading
+      h3.title 重置密码
+    .panel-body
+      = form_for(@user, url: password_reset_path(params[:id])) do |f|
+        = render 'shared/error_messages', object: f.object
 
-.row
-  .col-md-4.col-md-offset-4
-    = form_for(@user, url: password_reset_path(params[:id])) do |f|
-      = render 'shared/error_messages', object: f.object
+        = hidden_field_tag :email, @user.email
 
-      = hidden_field_tag :email, @user.email
+        .form-group
+          = f.label :password, '密码'
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.label :password_confirmation, "密码确认"
+          = f.password_field :password_confirmation, class: 'form-control'
 
-      = f.label :password
-      = f.password_field :password, class: 'form-control'
-
-      = f.label :password_confirmation, "Confirmation"
-      = f.password_field :password_confirmation, class: 'form-control'
-
-      = f.submit "Update password", class: "btn btn-primary"
+        = f.submit "确认", class: "btn btn-success"
