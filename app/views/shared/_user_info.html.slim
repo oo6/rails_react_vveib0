@@ -1,4 +1,6 @@
-a href=user_path(current_user)
-  img.gravatar src=portrait_url(current_user) alt=current_user.name
+- @user ||= current_user
+
+a href=user_path(@user)
+  img.gravatar src=portrait_url(@user) alt=@user.name
   h3
-    = current_user.name
+    = @user.name

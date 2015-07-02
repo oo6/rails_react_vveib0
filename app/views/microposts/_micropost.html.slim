@@ -9,11 +9,12 @@ li id="micropost-#{ micropost.id }"
 
     p.content
       = micropost.content
-      - if micropost.picture?
-        img src=micropost.picture.url alt=""
+    - if micropost.picture?
+      img src=micropost.picture.url alt=""
     p.timestamp
       = time_ago_tag(micropost.created_at)
       |  来自 VVeib0
 
       - if current_user?(micropost.user)
-        a.delete href=micropost_path(micropost) data-method='delete' 删除
+        a.delete href=micropost_path(micropost) data-method='delete'
+          i.fa.fa-trash-o

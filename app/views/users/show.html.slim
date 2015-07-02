@@ -5,9 +5,10 @@ aside.col-md-4
     = render 'shared/user_info'
   section.statistics.col-md-10.col-md-offset-1
     = render 'shared/statistics'
+  section.follow-form
+    = render 'follow_form' if logged_in?
 
 .col-md-8
-  = render 'follow_form' if logged_in?
   - if @user.microposts.any?
     h3
       | 全部微博 (

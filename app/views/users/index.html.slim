@@ -1,9 +1,0 @@
-= provide :title, 'All Users'
-
-h1 All Users
-
-= will_paginate
-ul.users
-  = render @users
-  / Rails 会把 @users 当作 User 对象列表，传递给 render 后，Rails 会自动遍历，然后调用局部视图
-= will_paginate

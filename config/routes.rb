@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
-  resources :users do
+  resources :users, except: [:index] do
     member do
       get :following, :followers
     end
@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy] do
+    get 'last', on: :collection
+  end
 
   resources :relationships, only: [:create, :destroy]
 end

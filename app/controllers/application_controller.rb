@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :page_identifier
 
   def page_identifier
-    "#{self.class.to_s.downcase.gsub('::','-').gsub('controller','')} #{action_name}"
+    "#{self.class.to_s.downcase.gsub('::','-').gsub('controller','')}-page #{action_name}"
   end
 
   private
