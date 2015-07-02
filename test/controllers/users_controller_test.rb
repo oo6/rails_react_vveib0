@@ -9,7 +9,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-    assert_select 'title', 'Sign Up | Ruby on Rails Tutorial Sample App'
+    assert_select 'title', '注册 | VVeib0'
   end
 
   test "should redirect edit when not logged in" do
@@ -32,10 +32,5 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as(@other_user)
     patch :update, id: @user, user: { name: @user.name, email: @user.email }
     assert_redirected_to root_url
-  end
-
-  test "should redirect index when not logged in" do
-    get :index
-    assert_redirected_to login_url
   end
 end

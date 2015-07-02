@@ -7,7 +7,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 
   test "micropost interface" do
     log_in_as(@user)
-    get root_path
+    get root_url
     assert_select 'div.pagination'
     # 无效提交
     assert_no_difference 'Micropost.count' do
@@ -23,7 +23,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match content, response.body
     # 删除一条微博
-    assert_select 'a', text: 'delete'
+    assert_select 'a>i.fa.fa-trash-o'
     first_micropost = @user.microposts.paginate(page: 1).first
     assert_difference 'Micropost.count', -1 do
       delete micropost_path(first_micropost)
