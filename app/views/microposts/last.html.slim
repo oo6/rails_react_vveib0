@@ -1,0 +1,7 @@
+= provide :title, '热门'
+
+h1 全球热门微博榜
+
+ul.microposts.col-md-8.col-md-offset-2
+  = render @microposts
+  / Rails 会把 @microposts 当作 Micropost 对象列表，传递给 render 后，Rails 会自动遍历，然后调用局部视图

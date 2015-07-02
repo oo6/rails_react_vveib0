@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :last]
   before_action :correct_user, only: [:destroy]
 
   def create
@@ -17,6 +17,10 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     flash[:success] = "Micropost deleted"
     redirect_to request.referrer || root_url
+  end
+
+  def last
+    @microposts = Micropost.first(25)
   end
 
   private
