@@ -1,34 +1,19 @@
 li id="micropost-#{ micropost.id }"
-  img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
-  span.user
+  .col-md-2
     a href=user_path(micropost.user)
-      = micropost.user.name
-  span.content
-    = micropost.content
-    - if micropost.picture?
-      img src=micropost.picture.url alt=""
-  span.timestamp
-    | Posted 
-    = time_ago_in_words(micropost.created_at)
-    | ago.
+      img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
 
-    - if current_user?(micropost.user)
-      a.delete href=micropost_path(micropost) data-method='delete' delete
+  .col-md-10
+    a href=user_path(micropost.user)
+      strong = micropost.user.name
 
-javascript:
-  $(document).ready(function(){
-    $(".delete").click(function(){
-      swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: true },
-        function(){
-          swal("Deleted!", "Your imaginary file has been deleted.", "success");
-        }
-      );
-    });
-  });
+    p.content
+      = micropost.content
+      - if micropost.picture?
+        img src=micropost.picture.url alt=""
+    p.timestamp
+      = time_ago_tag(micropost.created_at)
+      |  来自 VVeib0
+
+      - if current_user?(micropost.user)
+        a.delete href=micropost_path(micropost) data-method='delete' 删除

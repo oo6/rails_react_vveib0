@@ -17,3 +17,6 @@
 
 # Ignore images uploads
 /public/uploads
+
+# Ignore config.
+/config/config.yml

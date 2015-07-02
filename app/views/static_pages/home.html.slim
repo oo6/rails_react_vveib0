@@ -1,18 +1,21 @@
 - if logged_in?
-  .row
-    aside.col-md-4
-      section.user-info
-        = render 'shared/user_info'
-      section.stats
-        = render 'shared/stats'
-      section.micropost-form
-        = render 'shared/micropost_form'
-    .col-md-8
-      h3 Micropost Feed
-      = render 'shared/feed'
+  aside.col-md-4
+    section.user-info
+      = render 'shared/user_info'
+    section.statistics.col-md-10.col-md-offset-1
+      = render 'shared/statistics'
+    section.micropost-form
+      = render 'shared/micropost_form'
+
+  .col-md-8
+    h3 全部动态
+    = render 'shared/feed'
 - else
-  .center
+  .center.col-md-7
     h1 欢迎来到微博
     p
       | 还没有微博账号？现在加入
       a.btn.btn-lg.btn-success href=signup_path 立即注册
+  
+  .col-md-4
+    = render 'shared/login_panel'

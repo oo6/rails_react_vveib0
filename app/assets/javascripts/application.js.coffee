@@ -5,8 +5,12 @@
 #= require bootstrap/dist/js/bootstrap.min.js
 #= require nprogress/nprogress.js
 #= require sweetalert/lib/sweet-alert.min.js
+#= require jquery-timeago/jquery.timeago.js
 
 #= require_tree .
+
+$(document).on 'page:update', ->
+  $("time[data-behaviors~=timeago]").timeago()
 
 NProgress.configure({ showSpinner: false })
 $(document).on 'page:fetch', ->

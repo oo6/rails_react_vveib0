@@ -1,22 +1,19 @@
 = provide :title, @user.name
 
-.row
-  aside.col-md-4
-    section.user-info
-      h1
-        img.gravatar src=portrait_url(@user) alt=@user.name
-        = @user.name
-    section.stats
-      = render 'shared/stats'
+aside.col-md-4
+  section.user-info
+    = render 'shared/user_info'
+  section.statistics.col-md-10.col-md-offset-1
+    = render 'shared/statistics'
 
-  .col-md-8
-    = render 'follow_form' if logged_in?
-    - if @user.microposts.any?
-      h3
-        | Microposts (
-        = @user.microposts.count
-        | )
-      ol.microposts
-        = render @microposts
+.col-md-8
+  = render 'follow_form' if logged_in?
+  - if @user.microposts.any?
+    h3
+      | 全部微博 (
+      = @user.microposts.count
+      | )
+    ul.microposts
+      = render @microposts
 
-      = will_paginate @microposts
+    = will_paginate @microposts

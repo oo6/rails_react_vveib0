@@ -1,10 +1,10 @@
-h1 Sample App
+h1 VVeib0
 
 p
-  | Hi 
+  | 你好 
   = @user.name
-  | ,
+  | ，
 
-p
-  | Welcome to the Sample App! Click on the link below to activate your account:
-  a href=edit_account_activation_url(@user.activation_token, email: @user.email) Activate
+p 欢迎来到 VVeib0! 请确认你的电子邮件地址以完成你的 VVeib0 账号注册。
+p 很简单，只需点击下面的链接即可。
+a href=edit_account_activation_url(@user.activation_token, email: @user.email) 立即确认
