@@ -9,11 +9,11 @@ aside.col-md-4
     = render 'follow_form' if logged_in?
 
 .col-md-8
+  h3
+    | 全部微博 (
+    = @user.microposts.count
+    | )
   - if @user.microposts.any?
-    h3
-      | 全部微博 (
-      = @user.microposts.count
-      | )
     ul.microposts
       = render @microposts
 

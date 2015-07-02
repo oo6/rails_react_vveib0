@@ -1,4 +1,10 @@
-li
-  img.gravatar src=portrait_url(user) alt=user.name
-  a href=user_path(user)
-    = user.name
+li.col-md-6
+  .col-md-4
+    a href=user_path(user)
+      img.gravatar src=portrait_url(user) alt=user.name
+
+  .col-md-8
+    a href=user_path(user)
+      strong = user.name
+    .follow-form
+      = render 'follow_form' if logged_in?

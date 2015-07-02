@@ -1,22 +1,19 @@
 = provide :title, @title
 
-.row
-  aside.col-md-4
-    section.user-info
-      img.gravatar src=portrait_url(@user) alt=@user.name
-      h1
-        = @user.name
-      p
-        a href=user_path view my profile
-      p
-        b
-          | Microposts:
-          = @user.microposts.count
+aside.col-md-4
+  section.user-info
+    = render "shared/user_info"
+  section.statistics.col-md-10.col-md-offset-1
+    = render 'shared/statistics'
 
-  .col-md-8
-    h3
-      = @title
-    - if @users.any?
-      ul.users.follow
-        = render @users
-      = will_paginate
+.col-md-8
+  h3
+    = @title
+    |  (
+    = @user.following.count
+    | )
+  - if @users.any?
+    ul.follow
+      = render @users
+
+    = will_paginate
