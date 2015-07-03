@@ -30,6 +30,10 @@ gem 'turbolinks', '2.5.3'
 
 gem 'jbuilder', '2.2.6'
 
+gem 'pry-rails', '0.3.2'
+
+gem 'puma', '2.11.3'
+
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development do
@@ -38,8 +42,6 @@ group :development do
   gem 'web-console', '2.0.0'
 
   gem 'spring', '1.3.4'
-
-  gem 'pry-rails', '0.3.2'
 end
 
 group :test do
