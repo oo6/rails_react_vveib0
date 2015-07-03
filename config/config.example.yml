@@ -3,16 +3,14 @@ default: &default
 
   mailer:
     smtp_settings:
-      address: 'smtp.gmail.com'
-      port: 587
-      enable_starttls_auto: true
+      # address:
+      # port:
       # domain:
       # user_name:
       # password:
       # authentication:
+      enable_starttls_auto: true
 
-    default_options:
-      from: no-reply@example.com
     default_url_options:
       host: localhost:3000
 
