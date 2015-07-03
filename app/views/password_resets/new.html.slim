@@ -7,7 +7,7 @@
     .panel-body
       = form_for :password_reset, url: password_resets_path do |f|
         .form-group
-          = f.label :邮箱
+          = f.label :email, "邮箱"
           = f.text_field :email, class: 'form-control'
 
         = f.submit "确定", class: "btn btn-success"

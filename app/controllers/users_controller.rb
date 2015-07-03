@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "请检查你的邮箱，并完成激活"
       redirect_to root_url
     else
       render :new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile Updated"
+      flash[:success] = "个人资料更新成功！"
       redirect_to @user
     else
       render :edit
