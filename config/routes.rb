@@ -38,4 +38,24 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+
+  namespace :admin do
+    root to: 'dashboard#past_day'
+
+    get 'past_day', to: 'dashboard#past_day'
+
+    get 'past_day_users_count', to: 'dashboard#past_day_users_count'
+
+    get 'past_week', to: 'dashboard#past_week'
+
+    get 'past_week_users_count', to: 'dashboard#past_week_users_count'
+
+    get 'past_month', to: 'dashboard#past_month'
+
+    get 'past_month_users_count', to: 'dashboard#past_month_users_count'
+
+    get 'past_year', to: 'dashboard#past_year'
+
+    get 'past_year_users_count', to: 'dashboard#past_year_users_count'
+  end
 end

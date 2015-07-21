@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title
+      = full_title yield(:title)
+    = stylesheet_link_tag 'application', media: 'all',
+                                          'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = render 'layouts/shim'
+
+  body class=page_identifier
+    .navbar.navbar-fixed-top.header-wrap
+      header
+        a.navbar-brand.logo href=admin_root_path
+          i.fa.fa-user-secret
+          | VVeib0 管理
+        ul.nav.navbar-nav.navbar-right
+          li
+            a href=admin_root_path 
+              i.fa.fa-line-chart
+              | 统计
+          li
+            a href='#'
+              i.fa.fa-user
+              | 用户
+          li
+            a href='#'
+              i.fa.fa-weibo
+              | 微博
+          li
+            a href=logout_path data-method='delete'
+              i.fa.fa-sign-out
+
+    .container
+      - flash.each do |message_type, message|
+        .alert class="alert-#{message_type}"
+          = message
+      = yield

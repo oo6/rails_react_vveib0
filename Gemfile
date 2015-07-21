@@ -34,6 +34,8 @@ gem 'pry-rails', '0.3.2'
 
 gem 'puma', '2.11.3'
 
+gem 'by_star', '2.2.1'
+
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development do

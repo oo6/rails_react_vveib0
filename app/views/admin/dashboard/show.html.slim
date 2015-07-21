@@ -1,0 +1,35 @@
+h1 数据统计
+.list-group.col-md-3
+  a.list-group-item class=('active' if action_name == 'past_day') href=admin_root_path
+    .pull-right
+      i.fa.fa-chevron-right
+    | 最近一天
+  a.list-group-item class=('active' if action_name == 'past_week') href=admin_past_week_path
+    .pull-right
+      i.fa.fa-chevron-right
+    | 最近一周
+  a.list-group-item class=('active' if action_name == 'past_month') href=admin_past_month_path
+    .pull-right
+      i.fa.fa-chevron-right
+    | 最近一个月
+  a.list-group-item class=('active' if action_name == 'past_year') href=admin_past_year_path
+    .pull-right
+      i.fa.fa-chevron-right
+    | 最近一年
+
+.col-md-9
+  table.table.table-bordered.table-hover
+    thead
+      tr
+        th 新建用户数
+        th 发表微博数
+    tbody
+      tr
+        td
+          = @user_count
+        td
+          = @micropost_count
+
+  #line-chart class="#{action_name}"
+    #line-chart-users
+    #line-chart-microposts

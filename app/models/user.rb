@@ -99,9 +99,14 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 如果当前用户关注了指定用户， 返回true
+  # 如果当前用户关注了指定用户，返回true
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # 如果当前用户是管理员，返回true
+  def admin?
+    CONFIG['admin_emails'] && CONFIG['admin_emails'].include?(email)
   end
 
   private
