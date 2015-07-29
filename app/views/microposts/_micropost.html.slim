@@ -18,3 +18,7 @@ li id="micropost-#{ micropost.id }"
       - if current_user?(micropost.user)
         a.delete href=micropost_path(micropost) data-method='delete'
           i.fa.fa-trash-o
+
+      a.comment display="false" content="#{ micropost.id }" href="javascript:void(0);" 评论
+
+    ul class="micropost-#{ micropost.id }-comments comments"

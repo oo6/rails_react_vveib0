@@ -1,0 +1,26 @@
+aside.col-md-4
+  section.user-info
+    = render 'shared/user_info'
+  section.statistics.col-md-10.col-md-offset-1
+    = render 'shared/statistics'
+
+.col-md-8
+  p.content
+    = @micropost.content
+  - if @micropost.picture?
+    img src=@micropost.picture.url alt=""
+  p.timestamp
+    = time_ago_tag(@micropost.created_at)
+    |  来自 VVeib0
+
+    - if current_user?(@micropost.user)
+      a.delete href=micropost_path(@micropost) data-method='delete'
+        i.fa.fa-trash-o
+
+  = render 'shared/comment_form'
+
+  - if @comments.any?
+    ul class="micropost-#{ @micropost.id }-comments comments"
+      = render @comments
+
+    = will_paginate @comments

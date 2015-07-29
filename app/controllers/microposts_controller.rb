@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "微博发布成功！"
       redirect_to root_url
     else
-      @feed_items = []
+      @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
     end
   end
@@ -21,6 +21,32 @@ class MicropostsController < ApplicationController
 
   def last
     @microposts = Micropost.first(25)
+  end
+
+  def show
+    @micropost = Micropost.find params[:id]
+    @user = @micropost.user
+    @comments = @micropost.comments.paginate(page: params[:page])
+  end
+
+  def get_last_five_comments
+    comments = Micropost.find(params[:id]).comments.first(5)
+    data = {}
+    comments.each do |comment|
+      user = comment.user
+      data[comment.id] = {
+        content: comment.content,
+        created_at: comment.created_at,
+        user: {
+          id: user.id,
+          name: user.name,
+          portrait_url: portrait_url(user)
+        }
+      }
+    end
+    respond_to do |format|
+      format.json { render json: data }
+    end
   end
 
   private

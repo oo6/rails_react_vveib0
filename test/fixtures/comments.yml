@@ -1,0 +1,31 @@
+one:
+  content: "Test one!"
+  created_at: <%= 10.minutes.ago %>
+  micropost: most_recent
+  user: mallory
+
+two:
+  content: "Test two!"
+  created_at: <%= 3.years.ago %>
+  micropost: most_recent
+  user: archer
+
+three:
+  content: "Test three!"
+  created_at: <%= 2.hours.ago %>
+  micropost: most_recent
+  user: michael
+
+most_recent:
+  content: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  micropost: most_recent
+  user: michael
+
+<% 30.times do |n| %>
+comment_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  micropost: most_recent
+  user: lana
+<% end %>

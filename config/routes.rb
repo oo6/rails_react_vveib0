@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
-  get 'sessions/new'
-
-  get 'users/new'
-
   root 'static_pages#home'
 
   get 'help' => 'static_pages#help'
@@ -33,9 +25,15 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  resources :microposts, only: [:create, :destroy] do
+  resources :microposts, only: [:create, :destroy, :show] do
     get 'last', on: :collection
+
+    resources :comments, only: [:create]
+
+    get 'get_last_five_comments', on: :member
   end
+
+  resources :comments, only: [:destroy]
 
   resources :relationships, only: [:create, :destroy]
 

@@ -1,0 +1,7 @@
+= form_for @micropost.comments.new, url: micropost_comments_path(@micropost), remote: true do |f|
+  = render 'shared/error_messages', object: f.object
+  
+  .form-group
+    = f.text_field :content, class: 'form-control'
+
+  = f.submit "发送", class: 'btn btn-success', 'data-disable-with' => "发送"

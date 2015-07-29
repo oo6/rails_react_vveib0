@@ -1,0 +1,20 @@
+li id="comment-#{ comment.id }"
+  .col-md-2
+    a href=user_path(comment.user)
+      img.gravatar src=portrait_url(comment.user) alt=comment.user.name
+
+  .col-md-10
+    a href=user_path(comment.user)
+      strong = comment.user.name
+
+    span.content
+      |  : 
+      = comment.content
+
+    p.timestamp
+      = time_ago_tag(comment.created_at)
+      |  来自 VVeib0
+
+      - if current_user?(comment.user)
+        a.delete href=comment_path(comment) data-remote="true" data-method='delete'
+          i.fa.fa-trash-o
