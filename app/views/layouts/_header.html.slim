@@ -26,6 +26,11 @@
             li.divider
             li
               a href=logout_path data-method='delete' 退出
+        li
+          a href=unread_notifications_path
+            i.fa.fa-inbox
+            span.notifications-count
+              = current_user.notifications.unread.count
       - else
         li
           a href=signup_path 注册

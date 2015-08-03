@@ -1,0 +1,26 @@
+li id="notification-#{ notification.id }"
+  - comment = notification.subject
+  - user = comment.user
+  - micropost = comment.micropost
+
+  .panel.panel-info
+    .panel-body
+      .title.row
+        .col-md-2
+          a href=user_path(user)
+            img.gravatar src=portrait_url(user) alt=user.name
+        .col-md-10
+          a href=user_path(micropost.user)
+            strong = user.name
+            a.delete href=notification_path(notification) data-remote="true" data-method='delete'
+              i.fa.fa-remove
+          p.comment-content
+            = comment.content
+
+      p.micropost-content
+        | 评论我的微博：
+        a href=micropost_path(micropost)
+          = micropost.content
+      p.timestamp
+        = time_ago_tag(micropost.created_at)
+        |  来自 VVeib0

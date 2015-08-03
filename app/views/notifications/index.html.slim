@@ -1,0 +1,6 @@
+.list-group.col-md-3
+  = render 'sidebar'
+.col-md-9
+  - if @notifications.any?
+    ul.notifications
+      = render @notifications

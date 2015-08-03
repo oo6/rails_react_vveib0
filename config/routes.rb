@@ -37,6 +37,12 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
+  resources :notifications, only: [:index, :destroy] do
+    collection do
+      get :unread, :get_unread_count, :comment, :mention, :like
+    end
+  end
+
   namespace :admin do
     root to: 'dashboard#past_day'
 

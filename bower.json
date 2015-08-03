@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap": "~3.3.2",
     "nprogress": "~0.1.6",
-    "sweetalert": "~0.4.2"
+    "sweetalert": "~0.4.2",
+    "jquery-timeago": "~1.4.1"
   }
 }

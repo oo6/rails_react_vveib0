@@ -1,0 +1,20 @@
+a.list-group-item class=('active' if action_name == 'unread') href=unread_notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 未读
+a.list-group-item class=('active' if action_name == 'index') href=notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 全部
+a.list-group-item class=('active' if action_name == 'comment') href=comment_notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 评论
+a.list-group-item class=('active' if action_name == 'mention') href=mention_notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | @我的
+a.list-group-item class=('active' if action_name == 'like') href=like_notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 赞
