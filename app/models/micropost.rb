@@ -1,4 +1,6 @@
 class Micropost < ActiveRecord::Base
+  include Likeable
+
   belongs_to :user
   has_many :comments, dependent: :destroy
 

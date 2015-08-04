@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  concern :likeable do
+    resource :like, only: [:create, :destroy]
+  end
+
   resources :users, except: [:index] do
     member do
       get :following, :followers
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  resources :microposts, only: [:create, :destroy, :show] do
+  resources :microposts, only: [:create, :destroy, :show], concerns: [:likeable] do
     get 'last', on: :collection
 
     resources :comments, only: [:create]
@@ -33,7 +37,7 @@ Rails.application.routes.draw do
     get 'get_last_five_comments', on: :member
   end
 
-  resources :comments, only: [:destroy]
+  resources :comments, only: [:destroy], concerns: [:likeable]
 
   resources :relationships, only: [:create, :destroy]
 

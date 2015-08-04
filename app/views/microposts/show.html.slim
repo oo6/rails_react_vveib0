@@ -17,6 +17,9 @@ aside.col-md-4
       a.delete href=micropost_path(@micropost) data-method='delete'
         i.fa.fa-trash-o
 
+    a id="like-for-micropost-#{ @micropost.id }" href=micropost_like_path(@micropost) data-remote="true" data-method="post"
+      i.fa.fa-thumbs-o-up
+
   = render 'shared/comment_form'
 
   - if @comments.any?
@@ -24,3 +27,7 @@ aside.col-md-4
       = render @comments
 
     = will_paginate @comments
+
+- if @micropost.liked_by?(current_user)
+  javascript:
+    Likes.updateLike('micropost', #{ @micropost.id });
