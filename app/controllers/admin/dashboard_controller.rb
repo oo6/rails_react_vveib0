@@ -1,10 +1,9 @@
 class Admin::DashboardController < Admin::ApplicationController
-  def show
-  end
-
   def past_day
     @user_count = User.past_day.count
     @micropost_count = Micropost.past_day.count
+    @comment_count = Comment.past_day.count
+    @like_count = Like.past_day.count
     render :show
   end
 
@@ -26,6 +25,8 @@ class Admin::DashboardController < Admin::ApplicationController
   def past_week
     @user_count = User.past_week.count
     @micropost_count = Micropost.past_week.count
+    @comment_count = Comment.past_week.count
+    @like_count = Like.past_week.count
     render :show
   end
 
@@ -45,6 +46,8 @@ class Admin::DashboardController < Admin::ApplicationController
   def past_month
     @user_count = User.past_month.count
     @micropost_count = Micropost.past_month.count
+    @comment_count = Comment.past_month.count
+    @like_count = Like.past_month.count
     render :show
   end
 
@@ -64,6 +67,8 @@ class Admin::DashboardController < Admin::ApplicationController
   def past_year
     @user_count = User.past_year.count
     @micropost_count = Micropost.past_year.count
+    @comment_count = Comment.past_year.count
+    @like_count = Like.past_year.count
     render :show
   end
 

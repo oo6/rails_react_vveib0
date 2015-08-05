@@ -1,0 +1,36 @@
+.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        span class="sr-only" Toggle navigation
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
+      a.navbar-brand.logo href=admin_root_path
+        i.fa.fa-user-secret
+        | VVeib0 管理
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href=admin_root_path 
+            i.fa.fa-line-chart
+            | 统计
+        li
+          a href='#'
+            i.fa.fa-user
+            | 用户
+        li
+          a href='#'
+            i.fa.fa-weibo
+            | 微博
+        li
+          a href='#'
+            i.fa.fa-comment
+            | 评论
+        li
+          a href='#'
+            i.fa.fa-thumbs-o-up
+            | 点赞
+        li
+          a href=logout_path data-method='delete'
+            i.fa.fa-sign-out
