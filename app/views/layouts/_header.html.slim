@@ -1,38 +1,45 @@
-.navbar.navbar-fixed-top.header-wrap
-  header
-    a.navbar-brand.logo href=root_path
-      i.fa.fa-weibo
-      | VVeib0
-    ul.nav.navbar-nav.navbar-right
-      - if logged_in?
-        li
-          a href=root_path 
-            i.fa.fa-home
-            | 首页
-        li
-          a href=last_microposts_path
-            i.fa.fa-compass
-            | 发现
-        li.dropdown
-          a.dropdown-toggle href="#" data-toggle="dropdown"
-            i.fa.fa-user
-            = current_user.name
-            b.caret
-          ul.dropdown-menu
-            li
-              a href=user_path(current_user) 个人资料
-            li
-              a href=edit_user_path(current_user) 设置
-            li.divider
-            li
-              a href=logout_path data-method='delete' 退出
-        li
-          a href=unread_notifications_path
-            i.fa.fa-inbox
-            span.notifications-count
-              = current_user.notifications.unread.count
-      - else
-        li
-          a href=signup_path 注册
-        li
-          a href=login_path 登录
+header.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-toggle="collapse" data-target="#bs-header-navbar-collapse"
+        span class="sr-only" Toggle navigation
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
+      a.navbar-brand.logo href=root_path
+        i.fa.fa-weibo
+        | VVeib0
+    .collapse.navbar-collapse#bs-header-navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          li
+            a href=root_path 
+              i.fa.fa-home
+              | 首页
+          li
+            a href=last_microposts_path
+              i.fa.fa-compass
+              | 发现
+          li.dropdown
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              i.fa.fa-user
+              = current_user.name
+              b.caret
+            ul.dropdown-menu
+              li
+                a href=user_path(current_user) 个人资料
+              li
+                a href=edit_user_path(current_user) 设置
+              li.divider
+              li
+                a href=logout_path data-method='delete' 退出
+          li
+            a href=unread_notifications_path
+              i.fa.fa-inbox
+              span.notifications-count
+                = current_user.notifications.unread.count
+        - else
+          li
+            a href=signup_path 注册
+          li
+            a href=login_path 登录

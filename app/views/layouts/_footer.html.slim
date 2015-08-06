@@ -1,14 +1,19 @@
-.footer-wrap
-  footer
-    .navbar-brand
-      | &copy; 
-      a href="http://i.leexu.me" iLeeXu
-      |  , all rights reserved 2015.
-
-    ul.nav.navbar-nav.navbar-right
-      li
-        a href=about_path 关于
-      li
-        a href=contact_path 联系
-      li
-        a href=help_path 帮助
+footer.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-toggle="collapse" data-target="#bs-footer-navbar-collapse"
+        span class="sr-only" Toggle navigation
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
+      .navbar-brand
+        i.fa.fa-copyright
+        a href="http://i.leexu.me" iLeeXu
+    .collapse.navbar-collapse#bs-footer-navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href=about_path 关于
+        li
+          a href=contact_path 联系
+        li
+          a href=help_path 帮助

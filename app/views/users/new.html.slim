@@ -1,6 +1,6 @@
 = provide :title, '注册'
 
-.col-md-4.col-md-offset-4
+.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
   .sign-up-panel.panel.panel-info
     .panel-heading
       h3.title 注册
@@ -9,19 +9,19 @@
         = render 'shared/error_messages', object: f.object
         .form-group
           = f.label :name, '昵称'
-          = f.text_field :name, class: 'form-control'
+          = f.text_field :name, class: 'form-control', tabindex: 1
         .form-group
           = f.label :email, '邮箱'
-          = f.text_field :email, class: 'form-control'
+          = f.text_field :email, class: 'form-control', tabindex: 2
         .form-group
           = f.label :password, '密码'
-          = f.password_field :password, class: 'form-control'
+          = f.password_field :password, class: 'form-control', tabindex: 3
         .form-group
           = f.label :password_confirmation, "密码确认"
-          = f.password_field :password_confirmation, class: 'form-control'
+          = f.password_field :password_confirmation, class: 'form-control', tabindex: 4
         
-        = f.submit "立即注册", class: "btn btn-success"
+        = f.submit "立即注册", class: "btn btn-success", tabindex: 5
 
-      p.tips
-        | 已有账号， 
-        a href=login_path 直接登录>>
+  p.tips
+    | 已有账号， 
+    a href=login_path 直接登录>>
