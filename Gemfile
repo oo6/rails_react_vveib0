@@ -38,6 +38,10 @@ gem 'by_star', '2.2.1'
 
 gem 'sdoc', '0.4.1', group: :doc
 
+gem 'omniauth', '1.2.2'
+
+gem 'omniauth-github', '1.1.2'
+
 group :development do
   gem 'byebug', '3.5.1'
 

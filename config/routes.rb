@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  get '/auth/:provider/callback', to: 'authentications#callback'
+
   concern :likeable do
     resource :like, only: [:create, :destroy]
   end

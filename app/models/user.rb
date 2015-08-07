@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :authentications, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -17,7 +18,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
 
-  validates :name, presence: true, length: { maximum: 50, minimum: 6 }
+  validates :name, presence: true, length: { maximum: 50, minimum: 1 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, 
                                     format: { with: VALID_EMAIL_REGEX },
@@ -110,6 +111,10 @@ class User < ActiveRecord::Base
   # 如果当前用户是管理员，返回true
   def admin?
     CONFIG['admin_emails'] && CONFIG['admin_emails'].include?(email)
+  end
+
+  def User.find_or_create_from_auth_hash(user_params)
+    find_by(email: user_params[:email]) || create(user_params)
   end
 
   private

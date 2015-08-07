@@ -9,7 +9,7 @@
       .form-group
         = f.label :passowrd, '密码'
         |  (
-        a href=new_password_reset_path 忘记密码
+        a.forget-password href=new_password_reset_path 忘记密码
         | )
         = f.password_field :password, class: 'form-control', tabindex: 2
       .checkbox
@@ -18,3 +18,5 @@
           span 记住我
 
       = f.submit "登录", class: "btn btn-success", tabindex: 3
+
+      a.btn.btn-primary.pull-right href='/auth/github' Login via GitHub
