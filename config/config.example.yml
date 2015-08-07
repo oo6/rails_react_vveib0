@@ -3,19 +3,21 @@ default: &default
 
   mailer:
     smtp_settings:
-      # address:
-      # port:
-      # domain:
+      address: 'smtp.gmail.com'
+      port: 587
+      enable_starttls_auto: true
+      domain: 'gmail.com'
       # user_name:
       # password:
-      # authentication:
-      enable_starttls_auto: true
+      authentication: 'plain'
 
     default_url_options:
-      host: localhost:3000
+      # host: localhost:3000
 
 development:
   <<: *default
+  admin_emails:
+    # - admin@example.com
 
 test:
   <<: *default
