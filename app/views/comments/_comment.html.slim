@@ -9,7 +9,7 @@ li id="comment-#{ comment.id }"
 
     span.content
       |  : 
-      = comment.content
+      = content_format(comment.content)
 
     p.timestamp
       = time_ago_tag(comment.created_at)

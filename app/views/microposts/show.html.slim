@@ -6,7 +6,7 @@ aside.col-md-4
 
 .col-md-8
   p.content
-    = @micropost.content
+    = content_format(@micropost.content)
   - if @micropost.picture?
     img src=@micropost.picture.url alt=""
   p.timestamp

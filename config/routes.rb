@@ -21,7 +21,11 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :users, except: [:index] do
+  scope path: '/users/:name', as: 'user' do
+    root 'users#show', as: ''
+  end
+
+  resources :users, except: [:index, :show] do
     member do
       get :following, :followers
     end

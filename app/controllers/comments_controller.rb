@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     if @comment.save
       Notification.create(user: @micropost.user, subject: @comment, name: 'comment')
 
+      @comment.create_mention_notification
+
       respond_to do |format|
         format.html { redirect_to @micropost }
         format.js

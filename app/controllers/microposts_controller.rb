@@ -5,6 +5,8 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.new(micropost_params)
     if @micropost.save
+      @micropost.create_mention_notification
+      
       flash[:success] = "微博发布成功！"
       redirect_to root_url
     else
