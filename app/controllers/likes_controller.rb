@@ -3,6 +3,8 @@ class LikesController < ApplicationController
 
   def create
     @subject.likes.find_or_create_by user: current_user
+    Notification.create(user: @subject.user, subject: @subject, name: 'like')
+
     respond_to do |format|
       format.html
       format.js
