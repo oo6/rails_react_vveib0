@@ -21,3 +21,7 @@ li id="comment-#{ comment.id }"
 
       a id="like-for-comment-#{ comment.id }" href=comment_like_path(comment) data-remote="true" data-method="post"
         i.fa.fa-thumbs-o-up
+
+- if comment.liked_by?(current_user)
+  javascript:
+    Likes.updateLike('comment', #{ comment.id });
