@@ -29,21 +29,6 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def comment
-    @notifications = current_user.notifications.named('comment').includes(:subject).paginate(page: params[:page])
-    render :index
-  end
-
-  def mention
-    @notifications = current_user.notifications.named('mention').includes(:subject).paginate(page: params[:page])
-    render :index
-  end
-
-  def like
-    @notifications = current_user.notifications.named('like').includes(:subject).paginate(page: params[:page])
-    render :index
-  end
-
   private
     def mark_all_as_read
       current_user.notifications.unread.update_all(read: true,

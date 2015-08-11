@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
-  before_action :logged_in_user, :find_subject
+  before_action :logged_in_user
+  before_action :find_subject, only: [:create, :destroy]
 
   def create
     @like = @subject.likes.find_or_create_by user: current_user
@@ -17,6 +18,14 @@ class LikesController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def inbox
+    @likes = current_user.notifications.named('like').includes(:subject).paginate(page: params[:page])
+  end
+
+  def outbox
+    @likes = current_user.likes.paginate(page: params[:page])
   end
 
   private

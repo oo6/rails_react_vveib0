@@ -43,14 +43,28 @@ Rails.application.routes.draw do
     get 'get_last_five_comments', on: :member
   end
 
-  resources :comments, only: [:destroy], concerns: [:likeable]
+  resources :comments, only: [:destroy], concerns: [:likeable] do
+    collection do
+      get :inbox, :outbox
+    end
+  end
 
   resources :relationships, only: [:create, :destroy]
 
   resources :notifications, only: [:index, :destroy] do
     collection do
-      get :unread, :get_unread_count, :comment, :mention, :like
+      get :unread, :get_unread_count
     end
+  end
+
+  scope :mentions do
+    get :micropost, to: 'mentions#micropost', as: 'micropost_mentions'
+    get :comment, to: 'mentions#comment', as: 'comment_mentions'
+  end
+
+  scope :likes do
+    get :inbox, to: 'likes#inbox', as: 'inbox_likes'
+    get :outbox, to: 'likes#outbox', as: 'outbox_likes'
   end
 
   namespace :admin do

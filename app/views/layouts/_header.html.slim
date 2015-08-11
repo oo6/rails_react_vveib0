@@ -21,23 +21,45 @@ header.navbar.navbar-default.navbar-fixed-top
               i.fa.fa-compass
               | 发现
           li.dropdown
-            a.dropdown-toggle href="#" data-toggle="dropdown"
+            a href=user_path(current_user.name)
               i.fa.fa-user
               = current_user.name
+          li
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              i.fa.fa-envelope
               b.caret
             ul.dropdown-menu
               li
-                a href=user_path(current_user) 个人资料
+                a href=unread_notifications_path 未读
+              li.divider
               li
-                a href=edit_user_path(current_user) 设置
+                a href=micropost_mentions_path @我的
+              li
+                a href=inbox_comments_path 评论
+              li
+                a href=inbox_likes_path 赞
+              li.divider
+              li
+                a href="#" 消息设置
+          li
+            a.dropdown-toggle href="#" data-toggle="dropdown"
+              i.fa.fa-cog
+              b.caret
+            ul.dropdown-menu
+              li
+                a href="#" 我的信息
+              li
+                a href="#" 安全中心
+              li
+                a href="#" 消息设置
+              li
+                a href="#" 帐号绑定
               li.divider
               li
                 a href=logout_path data-method='delete' 退出
           li
-            a href=unread_notifications_path
-              i.fa.fa-inbox
-              span.notifications-count
-                = current_user.notifications.unread.count
+            a href="#"
+              i.fa.fa-pencil-square
         - else
           li
             a href=signup_path 注册

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user
   
   def create
     @micropost = Micropost.find(params[:micropost_id])
@@ -23,6 +23,14 @@ class CommentsController < ApplicationController
       format.html { redirect_to request.referrer || root_url }
       format.js
     end
+  end
+
+  def inbox
+    @subject = current_user.notifications.named('comment').includes(:subject).paginate(page: params[:page])
+  end
+
+  def outbox
+    @comments = current_user.comments.paginate(page: params[:page])
   end
 
   private

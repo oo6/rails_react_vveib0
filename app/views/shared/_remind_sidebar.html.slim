@@ -1,0 +1,16 @@
+a.list-group-item class=('active' if controller_name == 'notifications') href=unread_notifications_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 未读
+a.list-group-item class=('active' if controller_name == 'mentions') href=micropost_mentions_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | @我的
+a.list-group-item class=('active' if controller_name == 'comments') href=inbox_comments_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 评论
+a.list-group-item class=('active' if controller_name == 'likes') href=inbox_likes_path
+  .pull-right
+    i.fa.fa-chevron-right
+  | 赞
