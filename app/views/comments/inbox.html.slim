@@ -2,3 +2,7 @@
   = render 'shared/remind_sidebar'
 .col-md-9
   = render 'tabs'
+
+  ul.comments
+    - @notifications.each do |notification|
+      = render 'notifications_comment', comment: notification.subject

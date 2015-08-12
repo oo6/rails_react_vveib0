@@ -2,3 +2,8 @@
   = render 'shared/remind_sidebar'
 .col-md-9
   = render 'tabs'
+
+  ul.comments
+    - @comments.each do |comment|
+      = render 'notifications_comment', comment: comment,
+                                        name: comment.micropost.user.name

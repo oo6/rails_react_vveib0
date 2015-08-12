@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def inbox
-    @subject = current_user.notifications.named('comment').includes(:subject).paginate(page: params[:page])
+    @notifications = current_user.notifications.named('comment').includes(:subject).paginate(page: params[:page])
   end
 
   def outbox
