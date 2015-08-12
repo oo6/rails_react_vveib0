@@ -21,7 +21,7 @@ class LikesController < ApplicationController
   end
 
   def inbox
-    @likes = current_user.notifications.named('like').includes(:subject).paginate(page: params[:page])
+    @notifications = current_user.notifications.named('like').includes(:subject).paginate(page: params[:page])
   end
 
   def outbox

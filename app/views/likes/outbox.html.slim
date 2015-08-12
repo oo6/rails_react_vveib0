@@ -1,4 +1,9 @@
 .list-group.col-md-3
   = render 'shared/remind_sidebar'
 .col-md-9
-  a href=inbox_comments_path inbox
+  = render 'tabs'
+  
+  ul.likes
+    = render @likes
+
+  = will_paginate @likes

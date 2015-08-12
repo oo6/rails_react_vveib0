@@ -1,4 +1,10 @@
 .list-group.col-md-3
   = render 'shared/remind_sidebar'
 .col-md-9
-  a href=outbox_likes_path outbox
+  = render 'tabs'
+  
+  ul.likes
+    - @notifications.each do |notification|
+      = render 'like', like: notification.subject
+
+  = will_paginate @notifications

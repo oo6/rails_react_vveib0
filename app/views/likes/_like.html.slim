@@ -1,0 +1,25 @@
+li.row id="like-#{ like.id }"
+  .col-md-2
+    a href=user_path(like.user.name)
+      img.gravatar src=portrait_url(like.user) alt=like.user.name
+  .col-md-10
+    a href=user_path(like.user)
+      strong = like.user.name
+    span
+      |  赞了我的
+      - if like.subject.class.to_s == 'Micropost'
+        | 微博
+      - else
+        | 评论
+
+    p.subject
+      a href=user_path(like.subject.user.name)
+        | @
+        = like.subject.user.name
+        | : 
+      a.content href=subject_path(like.subject)
+        = like.subject.content
+
+    p.timestamp
+      = time_ago_tag(like.created_at)
+      |  来自 VVeib0

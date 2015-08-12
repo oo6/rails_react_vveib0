@@ -1,9 +1,9 @@
 li id="micropost-#{ micropost.id }"
-  .col-md-2
+  .col-xs-2
     a href=user_path(micropost.user)
       img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
 
-  .col-md-10
+  .col-xs-10
     a href=user_path(micropost.user)
       strong = micropost.user.name
 
