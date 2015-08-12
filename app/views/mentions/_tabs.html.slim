@@ -1,0 +1,5 @@
+ul.nav.nav-tabs
+  li class=('active' if action_name == 'micropost')
+    a href=micropost_mentions_path @我的微博
+  li class=('active' if action_name == 'comment')
+    a href=comment_mentions_path @我的评论

@@ -1,4 +1,8 @@
 .list-group.col-md-3
   = render 'shared/remind_sidebar'
 .col-md-9
-  a href=comment_mentions_path comment
+  = render 'tabs'
+
+  ul.microposts
+    - @notifications.each do |notification|
+      = render 'microposts/micropost', micropost: notification.subject

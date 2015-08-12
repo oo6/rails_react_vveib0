@@ -19,10 +19,12 @@ li id="micropost-#{ micropost.id }"
         a.delete href=micropost_path(micropost) data-method='delete'
           i.fa.fa-trash-o
 
-      a id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
-        i.fa.fa-thumbs-o-up
+    a.col-xs-4 href="javascript:void(0);" 转发
 
-      a.comment display="false" content="#{ micropost.id }" href="javascript:void(0);" 评论
+    a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);" 评论
+
+    a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
+      i.fa.fa-thumbs-o-up
 
     ul class="micropost-#{ micropost.id }-comments comments"
 
