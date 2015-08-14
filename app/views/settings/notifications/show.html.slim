@@ -2,4 +2,58 @@
   .col-sm-3
     = render 'settings/sidebar'
   .col-sm-9
-    h1 消息中心
+    .panel
+      .panel-heading
+        h3.title 消息中心
+      .panel-body
+        = form_for @user, url: settings_notifications_path, html: { class: 'form-horizontal' } do |f|
+          .form-group
+            label.control-label.col-sm-3 @我的
+            .col-sm-6
+              .radio
+                label
+                  = f.radio_button :mentions_permission, "all"
+                  |  所有人
+              .radio
+                label
+                  = f.radio_button :mentions_permission, "following"
+                  |  我关注的人
+              .radio
+                label
+                  = f.radio_button :mentions_permission, "none"
+                  |  不提醒
+              .help-block 我可以收到哪些人的@提醒
+
+          .form-group
+            label.control-label.col-sm-3 评论
+            .col-sm-6
+              .radio
+                label
+                  = f.radio_button :comments_permission, "all"
+                  |  所有人
+              .radio
+                label
+                  = f.radio_button :comments_permission, "following"
+                  |  我关注的人
+              .radio
+                label
+                  = f.radio_button :comments_permission, "none"
+                  |  不提醒
+              .help-block 我可以收到哪些人的评论提醒
+
+          .form-group
+            label.control-label.col-sm-3 赞
+            .col-sm-6
+              .radio
+                label
+                  = f.radio_button :likes_permission, true
+                  |  提醒
+              .radio
+                label
+                  = f.radio_button :likes_permission, false
+                  |  不提醒
+              .help-block 当有人赞我的微博或评论
+
+          .form-group
+            .col-sm-6.col-sm-offset-3
+              = f.submit '保存修改', class: 'btn btn-success', tabIndex: 5
