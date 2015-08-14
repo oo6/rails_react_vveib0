@@ -47,13 +47,13 @@ header.navbar.navbar-default.navbar-fixed-top
               b.caret
             ul.dropdown-menu
               li
-                a href="#" 我的信息
+                a href=settings_profile_path 个人资料
               li
-                a href="#" 安全中心
+                a href=settings_admin_path 账户设置
               li
-                a href="#" 消息设置
+                a href=settings_notifications_path 消息中心
               li
-                a href="#" 帐号绑定
+                a href=settings_binds_path 绑定管理
               li.divider
               li
                 a href=logout_path data-method='delete' 退出

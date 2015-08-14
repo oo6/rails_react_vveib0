@@ -67,6 +67,13 @@ Rails.application.routes.draw do
     get :outbox, to: 'likes#outbox', as: 'outbox_likes'
   end
 
+  namespace :settings do
+    resource :profile, only: [:show, :update]
+    resource :admin, only: [:show, :update]
+    resource :notifications, only: [:show, :update]
+    resource :binds, only: [:show, :update]
+  end
+
   namespace :admin do
     root to: 'dashboard#past_day'
 
