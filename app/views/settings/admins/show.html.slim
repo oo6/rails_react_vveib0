@@ -1,5 +1,53 @@
-.row  
+.row
   .col-sm-3
     = render 'settings/sidebar'
   .col-sm-9
-    h1 账户设置
+    .panel
+      .panel-heading
+        h3.title 修改密码
+      .panel-body
+        = form_for @user, url: settings_admin_path, html: { class: 'form-horizontal' } do |f|
+          .form-group
+            = label_tag :current_password, '当前密码', class: 'control-label col-sm-3'
+            .col-sm-6
+              = password_field_tag :current_password, nil, class: 'form-control', tabIndex: 1
+          .form-group
+            = f.label :password, '密码', class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.password_field :password, class: 'form-control', tabIndex: 2
+          .form-group
+            = f.label :password_confirmation, '密码确认', class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.password_field :password_confirmation, class: 'form-control', tabIndex: 3
+          .form-group
+            .col-sm-6.col-sm-push-3
+              = f.submit '保存修改', class: 'btn btn-success', tabIndex: 4
+
+    .panel.panel-danger
+      .panel-heading
+        h3.title 删除账户
+      .panel-body
+        = form_for @user, url: settings_admin_path, html: { method: :delete, class: 'delete-user' } do |f|
+          .form-group
+            = password_field_tag :current_password, nil, class: 'form-control', placeholder: '请输入当前账户的密码'
+          a.btn.btn-danger href="javascript:void(0);" 删除我的账户
+
+javascript:
+  $(document).on('click', '.delete-user .btn-danger', function() {
+    $(this).blur()
+    swal(
+      {
+        title: "你确定吗？",
+        text: "删除后你将无法恢复任何内容，请谨慎选择！",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DB524B",
+        confirmButtonText: "确定删除",
+        cancelButtonText: "我后悔了",
+        closeOnConfirm: false
+      }, function(){
+        swal("删除成功", "你的个人信息已经全部删除！", "success");
+        $('.delete-user').submit()
+      }
+    );
+  });
