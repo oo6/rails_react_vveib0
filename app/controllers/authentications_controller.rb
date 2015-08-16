@@ -5,12 +5,12 @@ class AuthenticationsController < ApplicationController
       log_in auth.user
     else
       user = User.find_or_create_from_auth_hash(user_params)
-      user.activate
+      user.activate unless user.activated
       user.authentications.create(provider: params[:provider], uid: auth_hash["uid"])
 
       log_in user
     end
-    redirect_to root_url
+    redirect_back_or root_url
   end
 
   private
