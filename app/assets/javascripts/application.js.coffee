@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
+#= require jquery.atwho
 
 #= require bootstrap/dist/js/bootstrap.min.js
 #= require nprogress/nprogress.js
