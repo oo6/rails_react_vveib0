@@ -3,9 +3,10 @@
   = render 'shared/error_messages', object: f.object
 
   .form-group
-    = f.text_area :content, placeholder: "有什么新鲜事想告诉大家？", class: 'form-control', rows: 5
+    = f.text_area :content, placeholder: "有什么新鲜事想告诉大家？", class: 'form-control', rows: 5, maxlength: 140
 
-  = f.submit "发布", class: "btn btn-success"
+  = f.submit "发布", class: "btn btn-success disabled"
+  p#characterLeft.pull-right 还可以输入140个字
 
   sapn.picture
     = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
@@ -18,5 +19,26 @@ javascript:
         title: "Maximum file size is 5MB. Please choose a smaller file.",
         type: "warning"
       });
+    }
+  });
+
+  $('#micropost_content').keyup(function() {
+    var max = 140;
+    var len = $(this).val().length;
+    if (len >= max) {
+      $('#characterLeft').text('已经到达最大输入字数');
+      $('#new_micropost .btn-success').addClass('disabled');            
+    } 
+    else {
+      var ch = max - len;
+      $('#characterLeft').text('还可以输入' + ch + '个字');
+      if(ch == 140) {
+        console.log(len)
+        $('#new_micropost .btn-success').addClass('disabled');
+      }
+      else {
+        console.log(len)
+        $('#new_micropost .btn-success').removeClass('disabled');
+      }
     }
   });
