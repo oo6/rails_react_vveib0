@@ -2,4 +2,29 @@
   .col-sm-3
     = render 'settings/sidebar'
   .col-sm-9
-    h1 个人资料
+    .panel
+      .panel-heading
+        h3.title 个人资料
+      .panel-body
+        = form_for @user, url: settings_profile_path, html: { class: 'form-horizontal' } do |f|
+          = render 'shared/error_messages', object: f.object
+
+          .edit-gravatar
+            img.gravatar src=portrait_url(@user) alt=@user.name
+            p
+              | 如需修改头像，请进入
+              a href="http://gravatar.com" target="_blank" gravatar.com
+
+          .form-group
+            = f.label :name, '昵称', class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :name, class: 'form-control'
+
+          .form-group
+            = f.label :email, '邮箱', class: 'control-label col-sm-3'
+            .col-sm-6
+              = f.text_field :email, class: 'form-control'
+
+          .form-group
+            .col-sm-6.col-sm-push-3
+              = f.submit "保存更改", class: "btn btn-success"
