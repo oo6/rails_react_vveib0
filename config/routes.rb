@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'authentications#callback'
 
+  get '/search' => 'search#index'
+
   concern :likeable do
     resource :like, only: [:create, :destroy]
   end

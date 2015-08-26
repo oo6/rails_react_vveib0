@@ -9,9 +9,12 @@ header.navbar.navbar-default.navbar-fixed-top
       a.navbar-brand.logo href=root_path
         i.fa.fa-weibo
         | VVeib0
+
     .collapse.navbar-collapse#bs-header-navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if logged_in?
+          li
+            = render 'layouts/search_form'
           li
             a href=root_path 
               i.fa.fa-home
@@ -61,6 +64,8 @@ header.navbar.navbar-default.navbar-fixed-top
             a href="#"
               i.fa.fa-pencil-square
         - else
+          li
+            = render 'layouts/search_form'
           li
             a href=signup_path 注册
           li
