@@ -73,7 +73,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :update]
     resource :admin, only: [:show, :update, :destroy]
     resource :notifications, only: [:show, :update]
-    resource :binds, only: [:show, :update]
+    resource :binds, only: [:show, :update, :destroy]
   end
 
   namespace :admin do

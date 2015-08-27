@@ -2,5 +2,69 @@
   .col-sm-3
     = render 'settings/sidebar'
   .col-sm-9
-    h1 绑定管理
-    a href="/auth/github" github
+    .panel
+      .panel-heading
+        h3.title 绑定管理
+      .panel-body
+        .col-sm-6.col-lg-3
+          .panel.panel-info
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.fa.fa-github.fa-3x
+                .col-xs-9.text-right
+                  p Github
+            - if current_user.authentications.where(provider: 'github').size == 0
+              a.users href='/auth/github'
+                .panel-footer
+                  span 点击绑定
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+            - else
+              a.users href=settings_binds_url(provider: 'github') data-method='delete'
+                .panel-footer
+                  span 解除绑定
+                  span.pull-right
+                    i.fa.fa-arrow-circle-right
+
+        .col-sm-6.col-lg-3
+          .panel.panel-info
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.fa.fa-twitter.fa-3x
+                .col-xs-9.text-right
+                  p Twitter
+            a.users href="#"
+              .panel-footer
+                span 敬请期待
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+
+        .col-sm-6.col-lg-3
+          .panel.panel-info
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.fa.fa-weibo.fa-3x
+                .col-xs-9.text-right
+                  p 微博
+            a.users href="#"
+              .panel-footer
+                span 敬请期待
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
+
+        .col-sm-6.col-lg-3
+          .panel.panel-info
+            .panel-heading
+              .row
+                .col-xs-3
+                  i.fa.fa-wechat.fa-3x
+                .col-xs-9.text-right
+                  p 微信
+            a.users href="#"
+              .panel-footer
+                span 敬请期待
+                span.pull-right
+                  i.fa.fa-arrow-circle-right
