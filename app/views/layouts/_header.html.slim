@@ -61,8 +61,19 @@ header.navbar.navbar-default.navbar-fixed-top
               li
                 a href=logout_path data-method='delete' 退出
           li
-            a href="#"
+            a href="javascript:void(0);" data-toggle="modal" data-target="#micropost-form-modal"
               i.fa.fa-pencil-square
+
+            .modal.fade#micropost-form-modal tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    button.close type="button" data-dismiss="modal" aria-hidden="true"
+                      i.fa.fa-times
+                    h4.modal-title#myModalLabel 有什么新鲜事想告诉大家？
+                  .modal-body
+                    = render 'shared/micropost_form'
+
         - else
           li
             = render 'layouts/search_form'
