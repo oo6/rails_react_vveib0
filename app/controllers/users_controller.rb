@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:name]) || User.find(params[:name])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    if @user = User.find_by(name: params[:name])
+      @microposts = @user.microposts.paginate(page: params[:page])
+    else
+      redirect_to search_path(q: params[:name])
+    end
   end
 
   def create
