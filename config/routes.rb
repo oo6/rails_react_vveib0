@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     root 'users#show', as: ''
   end
 
-  resources :users, except: [:index, :show] do
+  resources :users, only: [:new, :create] do
     member do
       get :following, :followers
     end
