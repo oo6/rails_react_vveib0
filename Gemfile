@@ -44,6 +44,8 @@ gem 'omniauth-github', '1.1.2'
 
 gem 'jquery-atwho-rails', '1.3.2'
 
+gem 'grape', '0.12.0'
+
 group :development do
   gem 'byebug', '3.5.1'
 
