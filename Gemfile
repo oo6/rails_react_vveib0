@@ -46,6 +46,10 @@ gem 'jquery-atwho-rails', '1.3.2'
 
 gem 'grape', '0.12.0'
 
+gem 'active_model_serializers', '0.9.3'
+
+gem 'grape-active_model_serializers', '1.3.2'
+
 group :development do
   gem 'byebug', '3.5.1'
 
