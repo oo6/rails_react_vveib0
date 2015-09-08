@@ -6,6 +6,7 @@ module V1
 
     helpers V1::Helpers
     mount V1::Microposts
+    mount V1::Users
 
     desc "用户登录验证"
     params do
