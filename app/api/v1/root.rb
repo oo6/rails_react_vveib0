@@ -5,6 +5,7 @@ module V1
     formatter :json, Grape::Formatter::ActiveModelSerializers
 
     helpers V1::Helpers
+    mount V1::Microposts
 
     desc "用户登录验证"
     params do
