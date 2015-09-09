@@ -7,5 +7,9 @@ module V1
     def authenticate!
       error!('401 Unauthenticated', 401) unless current_user
     end
+
+    def correct_find!(model)
+      error!('404 Not Found', 404) unless model
+    end
   end
 end
