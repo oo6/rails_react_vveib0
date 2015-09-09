@@ -19,6 +19,26 @@ module V1
         get :microposts, each_serializer: MicropostSerializer, root: 'microposts' do
           render @user.microposts.paginate(page: params[:page])
         end
+
+        desc "关注用户"
+        params do
+          requires :access_token, type: String
+        end
+        post :follow do
+          authenticate!
+          current_user.follow(@user)
+          { ok: 1 }
+        end
+
+        desc "取消关注用户"
+        params do
+          requires :access_token, type: String
+        end
+        post :unfollow do
+          authenticate!
+          current_user.unfollow(@user)
+          { ok: 1 }
+        end
       end
     end
   end
