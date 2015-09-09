@@ -15,6 +15,20 @@ module V1
           error!({ error: @micropost.errors.full_messages }, 400)
         end
       end
+
+      namespace ':id' do
+        before do
+          @micropost = Micropost.find(params[:id])
+        end
+
+        desc "获取某条微博的评论列表"
+        params do
+          optional :page, type: Integer, default: 1
+        end
+        get :comments, each_serializer: CommentSerializer, root: 'comments' do
+          render @micropost.comments.includes(:user).paginate(page: params[:page])
+        end
+      end
     end
   end
 end
