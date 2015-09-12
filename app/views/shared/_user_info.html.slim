@@ -1,6 +1,26 @@
 - @user ||= current_user
 
-a href=user_path(@user)
-  img.gravatar src=portrait_url(@user) alt=@user.name
-  h3
-    = @user.name
+.panel.user-info
+  .panel-body
+    a href=user_path(@user.name)
+      img.gravatar src=portrait_url(@user) alt=@user.name
+      h3
+        = @user.name
+
+  .panel-footer
+    .row
+      a.col-xs-4 href=following_user_path(@user)
+        strong#following
+          = @user.following.count
+        br
+        | 关注
+      a.col-xs-4 href=followers_user_path(@user)
+        strong#followers
+          = @user.followers.count
+        br
+        | 粉丝
+      a.col-xs-4 href=user_path(@user)
+        strong#microposts
+          = @user.microposts.count
+        br
+        | 微博
