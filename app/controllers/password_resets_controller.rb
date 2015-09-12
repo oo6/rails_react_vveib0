@@ -46,7 +46,7 @@ class PasswordResetsController < ApplicationController
 
     # 确保是有效用户
     def valid_user
-      redirect_to root_url unless(@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
+      redirect_to root_url unless(@user && @user.activated? && @user.authenticated?(:password_reset, params[:id]))
     end
 
     # 如果密码和密码确认都为空，返回 true
