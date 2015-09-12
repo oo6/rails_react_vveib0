@@ -9,12 +9,12 @@
 
   .panel-footer
     .row
-      a.col-xs-4 href=following_user_path(@user)
+      a.col-xs-4 href=user_following_path(@user.name)
         strong#following
           = @user.following.count
         br
         | 关注
-      a.col-xs-4 href=followers_user_path(@user)
+      a.col-xs-4 href=user_followers_path(@user.name)
         strong#followers
           = @user.followers.count
         br

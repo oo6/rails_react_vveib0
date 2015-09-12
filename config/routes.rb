@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'signup'  => 'users#new'
 
+  post 'signup'  => 'users#create'
+
   get 'login' => 'sessions#new'
 
   post 'login' => 'sessions#create'
@@ -27,12 +29,9 @@ Rails.application.routes.draw do
 
   scope path: '/users/:name', as: 'user' do
     root 'users#show', as: ''
-  end
 
-  resources :users, only: [:new, :create] do
-    member do
-      get :following, :followers
-    end
+    get :following, to: 'users#following', as: 'following'
+    get :followers, to: 'users#followers', as: 'followers'
   end
 
   resources :account_activations, only: [:index]

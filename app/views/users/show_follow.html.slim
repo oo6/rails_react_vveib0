@@ -1,19 +1,11 @@
 = provide :title, @title
-
-aside.col-md-4
-  section.user-info
+row
+  .col-sm-3
     = render "shared/user_info"
-  section.statistics.col-md-10.col-md-offset-1
-    = render 'shared/statistics'
 
-.col-md-8
-  h3
-    = @title
-    |  (
-    = @user.following.count
-    | )
-  - if @users.any?
-    ul.follow
-      = render @users
+  .col-sm-9
+    - if @users.any?
+      ul.follow
+        = render @users
 
-    = will_paginate
+      = will_paginate

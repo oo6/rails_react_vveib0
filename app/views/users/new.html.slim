@@ -5,7 +5,7 @@
     .panel-heading
       h3.title 注册
     .panel-body
-      = form_for @user do |f|
+      = form_for @user, url: signup_url do |f|
         = render 'shared/error_messages', object: f.object
         .form-group
           = f.label :name, '昵称'
