@@ -1,6 +1,7 @@
-.list-group.col-md-3
-  = render 'shared/remind_sidebar'
-.col-md-9
-  - if @notifications.any?
-    ul.notifications
-      = render @notifications
+.row
+  .col-sm-3
+    = render 'shared/remind_sidebar'
+  .col-sm-9
+    - if @notifications.any?
+      ul.notifications
+        = render @notifications

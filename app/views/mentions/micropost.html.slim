@@ -1,8 +1,9 @@
-.list-group.col-md-3
-  = render 'shared/remind_sidebar'
-.col-md-9
-  = render 'tabs'
+.row
+  .col-sm-3
+    = render 'shared/remind_sidebar'
+  .col-sm-9
+    = render 'tabs'
 
-  ul.microposts
-    - @notifications.each do |notification|
-      = render 'microposts/micropost', micropost: notification.subject
+    ul.microposts
+      - @notifications.each do |notification|
+        = render 'microposts/micropost', micropost: notification.subject

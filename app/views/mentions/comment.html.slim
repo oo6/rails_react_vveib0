@@ -1,27 +1,28 @@
-.list-group.col-md-3
-  = render 'shared/remind_sidebar'
-.col-md-9
-  = render 'tabs'
+.row
+  .col-sm-3
+    = render 'shared/remind_sidebar'
+  .col-sm-9
+    = render 'tabs'
 
-  ul.microposts
-    - @notifications.each do |notification|
-      li.row id="comment-#{ notification.subject.id }"
-        .col-sm-2
-          a href=user_path(notification.subject.user.name)
-            img.gravatar src=portrait_url(notification.subject.user) alt=notification.subject.user.name
-        .col-sm-10
-          a href=user_path(notification.subject.user)
-            strong = notification.subject.user.name
-          p.comment-content
-            = content_format(notification.subject.content)
+    ul.microposts
+      - @notifications.each do |notification|
+        li.row id="comment-#{ notification.subject.id }"
+          .col-sm-2
+            a href=user_path(notification.subject.user.name)
+              img.gravatar src=portrait_url(notification.subject.user) alt=notification.subject.user.name
+          .col-sm-10
+            a href=user_path(notification.subject.user)
+              strong = notification.subject.user.name
+            p.comment-content
+              = content_format(notification.subject.content)
 
-          span
-            | 评论
-            = notification.subject.micropost.user.name
-            | 的微博：
-          span.micropost-content
-            = content_format(notification.subject.micropost.content)
+            span
+              | 评论
+              = notification.subject.micropost.user.name
+              | 的微博：
+            span.micropost-content
+              = content_format(notification.subject.micropost.content)
 
-          p.timestamp
-            = time_ago_tag(notification.subject.created_at)
-            |  来自 VVeib0
+            p.timestamp
+              = time_ago_tag(notification.subject.created_at)
+              |  来自 VVeib0

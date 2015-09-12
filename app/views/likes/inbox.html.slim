@@ -1,10 +1,11 @@
-.list-group.col-md-3
-  = render 'shared/remind_sidebar'
-.col-md-9
-  = render 'tabs'
-  
-  ul.likes
-    - @notifications.each do |notification|
-      = render 'like', like: notification.subject
+.row
+  .col-sm-3
+    = render 'shared/remind_sidebar'
+  .col-sm-9
+    = render 'tabs'
+    
+    ul.likes
+      - @notifications.each do |notification|
+        = render 'like', like: notification.subject
 
-  = will_paginate @notifications
+    = will_paginate @notifications
