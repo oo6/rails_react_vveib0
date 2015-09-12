@@ -1,0 +1,5 @@
+$('#micropost-<%= @micropost.id %>').slideUp(function() {
+  $(this).remove();
+});
+
+$("#microposts-count").html('<%= current_user.microposts.count %>')

@@ -10,7 +10,7 @@
           strong = micropost.user.name
 
         - if current_user?(micropost.user)
-            a.delete.pull-right href=micropost_path(micropost) data-method='delete'
+            a.delete.pull-right href=micropost_path(micropost) data-method='delete' data-remote="true"
               i.fa.fa-trash-o
 
         p.micropost-content

@@ -6,9 +6,14 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.new(micropost_params)
     if @micropost.save
       @micropost.create_mention_notification
-      
-      flash[:success] = "微博发布成功！"
-      redirect_to root_url
+
+      respond_to do |format|
+        format.html do
+          flash[:success] = "微博发布成功！"
+          redirect_to root_url
+        end
+        format.js
+      end
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
@@ -17,8 +22,14 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "微博已删除！"
-    redirect_to request.referrer || root_url
+    
+    respond_to do |format|
+      format.html do
+        flash[:success] = "微博已删除！"
+        redirect_to request.referrer || root_url
+      end
+      format.js
+    end
   end
 
   def last

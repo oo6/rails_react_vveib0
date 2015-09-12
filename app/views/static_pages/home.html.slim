@@ -4,6 +4,13 @@
       = render 'shared/user_info'
 
     .col-sm-9
+      .panel
+        .panel-body
+          .title 有什么新鲜事想告诉大家？
+          
+          .micropost-form
+            = render 'shared/micropost_form'
+
       - if @feed_items.any?
         .microposts
           = render @feed_items
