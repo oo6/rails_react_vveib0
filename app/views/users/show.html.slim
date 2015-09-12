@@ -1,20 +1,13 @@
 = provide :title, @user.name
 
-aside.col-md-4
-  section.user-info
+.row
+  .col-sm-3
     = render 'shared/user_info'
-  section.statistics.col-md-10.col-md-offset-1
-    = render 'shared/statistics'
-  section.follow-form
-    = render 'follow_form' if logged_in?
+    section.follow-form
+      = render 'follow_form' if logged_in?
 
-.col-md-8
-  h3
-    | 全部微博 (
-    = @user.microposts.count
-    | )
-  - if @user.microposts.any?
-    ul.microposts
+  .col-sm-9
+    - if @user.microposts.any?
       = render @microposts
 
-    = will_paginate @microposts
+      = will_paginate @microposts

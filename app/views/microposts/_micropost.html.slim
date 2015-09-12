@@ -2,11 +2,11 @@
   .panel
     .panel-body
       .pull-left
-        a href=user_path(micropost.user)
+        a href=user_path(micropost.user.name)
           img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
 
       .content
-        a href=user_path(micropost.user)
+        a href=user_path(micropost.user.name)
           strong = micropost.user.name
 
         - if current_user?(micropost.user)
