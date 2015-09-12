@@ -1,1 +1,2 @@
 Likes.updateLike('<%= @subject.class.name.downcase %>', <%= @subject.id %>);
+$("#micropost-<%= @subject.id %> .likes-count").html('<%= @subject.likes.count %>')

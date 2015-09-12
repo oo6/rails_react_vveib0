@@ -1,32 +1,40 @@
-li id="micropost-#{ micropost.id }"
-  .col-xs-3.col-sm-2
-    a href=user_path(micropost.user)
-      img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
+.micropost id="micropost-#{ micropost.id }"
+  .panel
+    .panel-body
+      .pull-left
+        a href=user_path(micropost.user)
+          img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
 
-  .col-xs-9.col-sm-8
-    a href=user_path(micropost.user)
-      strong = micropost.user.name
+      .content
+        a href=user_path(micropost.user)
+          strong = micropost.user.name
 
-    p.content
-      = content_format(micropost.content)
-    - if micropost.picture?
-      img src=micropost.picture.url alt=""
-    p.timestamp
-      = time_ago_tag(micropost.created_at)
-      |  来自 VVeib0
+        - if current_user?(micropost.user)
+            a.delete.pull-right href=micropost_path(micropost) data-method='delete'
+              i.fa.fa-trash-o
 
-      - if current_user?(micropost.user)
-        a.delete href=micropost_path(micropost) data-method='delete'
-          i.fa.fa-trash-o
+        p.micropost-content
+          = content_format(micropost.content)
+        - if micropost.picture?
+          img src=micropost.picture.url alt=""
+        p.timestamp
+          = time_ago_tag(micropost.created_at)
+          |  来自 vveib0
 
-    a.col-xs-4 href="javascript:void(0);" 转发
+        
+    .panel-footer
+      .row
+        a.col-xs-4 href="javascript:void(0);" 转发
 
-    a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);" 评论
+        a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
+          | 评论 
+          span.comments-count= micropost.comments.count
 
-    a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
-      i.fa.fa-thumbs-o-up
+        a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
+          i.fa.fa-thumbs-o-up
+          span.likes-count= micropost.likes.count
 
-    ul class="micropost-#{ micropost.id }-comments comments"
+        ul class="micropost-#{ micropost.id }-comments comments"
 
 - if micropost.liked_by?(current_user)
   javascript:

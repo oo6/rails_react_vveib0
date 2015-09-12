@@ -1,3 +1,5 @@
 $('#comment-<%= @comment.id %>').slideUp(function() {
   $(this).remove();
 });
+
+$("#micropost-<%= @comment.micropost.id %> .comments-count").html('<%= @comment.micropost.comments.count %>')
