@@ -3,4 +3,4 @@
 |  ，
 
 | 欢迎来到 VVeib0! 请确认你的电子邮件地址以完成你的 VVeib0 账号注册。很简单，只需复制下面的链接到浏览器打开即可。
-= edit_account_activation_url(@user.activation_token, email: @user.email)
+= account_activations_url(email: @user.email, activation_token: @user.activation_token)
