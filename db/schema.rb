@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907122347) do
+ActiveRecord::Schema.define(version: 20150912033502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20150907122347) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "micropost_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "likes_count",  default: 0
   end
 
   add_index "comments", ["micropost_id", "created_at"], name: "index_comments_on_micropost_id_and_created_at", using: :btree
@@ -53,9 +54,11 @@ ActiveRecord::Schema.define(version: 20150907122347) do
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "picture"
+    t.integer  "comments_count", default: 0
+    t.integer  "likes_count",    default: 0
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
@@ -102,6 +105,9 @@ ActiveRecord::Schema.define(version: 20150907122347) do
     t.string   "comments_permission", default: "all"
     t.boolean  "likes_permission",    default: true
     t.string   "access_token"
+    t.integer  "microposts_count",    default: 0
+    t.integer  "following_count",     default: 0
+    t.integer  "followers_count",     default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

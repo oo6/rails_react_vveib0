@@ -2,7 +2,7 @@ class Micropost < ActiveRecord::Base
   include Likeable
   include Mentionable
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }

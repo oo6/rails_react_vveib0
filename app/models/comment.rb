@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   include Mentionable
 
   belongs_to :user
-  belongs_to :micropost
+  belongs_to :micropost, counter_cache: true
   has_many :notifications, as: 'subject', dependent: :delete_all
 
   default_scope -> { order(created_at: :desc) }
