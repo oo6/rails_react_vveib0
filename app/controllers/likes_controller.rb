@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     @like = @subject.likes.find_or_create_by user: current_user
-    Notification.create(user: @subject.user, subject: @like, name: 'like')
+    @like.notifications.create(user: @subject.user, name: 'like') if current_user != @subject.user
 
     respond_to do |format|
       format.html
