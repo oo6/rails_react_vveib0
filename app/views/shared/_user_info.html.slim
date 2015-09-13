@@ -19,7 +19,7 @@
           = @user.followers.count
         br
         | 粉丝
-      a.col-xs-4 href=user_path(@user)
+      a.col-xs-4 href=user_path(@user.name)
         strong#microposts-count
           = @user.microposts.count
         br
