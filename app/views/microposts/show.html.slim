@@ -1,32 +1,41 @@
-aside.col-md-4
-  section.user-info
+.row
+  .col-sm-3
     = render 'shared/user_info'
-  section.statistics.col-md-10.col-md-offset-1
-    = render 'shared/statistics'
 
-.col-md-8
-  p.content
-    = content_format(@micropost.content)
-  - if @micropost.picture?
-    img src=@micropost.picture.url alt=""
-  p.timestamp
-    = time_ago_tag(@micropost.created_at)
-    |  来自 VVeib0
+  .col-sm-9
+    .panel
+      .panel-body
+        p.content
+          = content_format(@micropost.content)
+        - if @micropost.picture?
+          img src=@micropost.picture.url alt=""
+        p.timestamp
+          = time_ago_tag(@micropost.created_at)
+          |  来自 VVeib0
 
-    - if current_user?(@micropost.user)
-      a.delete href=micropost_path(@micropost) data-method='delete'
-        i.fa.fa-trash-o
+          - if current_user?(@micropost.user)
+            a.delete.pull-right href=micropost_path(@micropost) data-method='delete'
+              i.fa.fa-trash-o
 
-    a id="like-for-micropost-#{ @micropost.id }" href=micropost_like_path(@micropost) data-remote="true" data-method="post"
-      i.fa.fa-thumbs-o-up
+        = render 'shared/comment_form'
 
-  = render 'shared/comment_form'
+      .panel-footer
+        .row
+          a.col-xs-4 href="javascript:void(0);" 转发
 
-  - if @comments.any?
-    ul class="micropost-#{ @micropost.id }-comments comments"
-      = render @comments
+          a.col-xs-4 href="javascript:void(0);"
+            | 评论 
+            span.comments-count= @micropost.comments.count
 
-    = will_paginate @comments
+          a.col-xs-4 id="like-for-micropost-#{ @micropost.id }" href=micropost_like_path(@micropost) data-remote="true" data-method="post"
+            i.fa.fa-thumbs-o-up
+            span.likes-count= @micropost.likes.count
+
+    - if @comments.any?
+      .comments class="micropost-#{ @micropost.id }-comments"
+        = render @comments
+
+      = will_paginate @comments
 
 - if @micropost.liked_by?(current_user)
   javascript:

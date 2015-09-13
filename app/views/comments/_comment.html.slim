@@ -1,26 +1,35 @@
-li id="comment-#{ comment.id }"
-  .col-md-2
-    a href=user_path(comment.user)
-      img.gravatar src=portrait_url(comment.user) alt=comment.user.name
+.comment id="comment-#{ comment.id }"
+  .panel
+    .panel-body
+      .pull-left
+        a href=user_path(comment.user.name)
+          img.gravatar src=portrait_url(comment.user) alt=comment.user.name
 
-  .col-md-10
-    a href=user_path(comment.user)
-      strong = comment.user.name
+      .content
+        a href=user_path(comment.user.name)
+          strong = comment.user.name
 
-    span.content
-      |  : 
-      = content_format(comment.content)
+        span.comment-content
+          |  : 
+          = content_format(comment.content)
 
-    p.timestamp
-      = time_ago_tag(comment.created_at)
-      |  来自 VVeib0
+        p.timestamp
+          = time_ago_tag(comment.created_at)
+          |  来自 VVeib0
 
-      - if current_user?(comment.user)
-        a.delete href=comment_path(comment) data-remote="true" data-method='delete'
-          i.fa.fa-trash-o
+          - if current_user?(comment.user)
+            a.delete.pull-right href=comment_path(comment) data-remote="true" data-method='delete'
+              i.fa.fa-trash-o
+    
+    .panel-footer
+      .row
+        a.col-xs-4 href="javascript:void(0);" 查看对话
 
-      a id="like-for-comment-#{ comment.id }" href=comment_like_path(comment) data-remote="true" data-method="post"
-        i.fa.fa-thumbs-o-up
+        a.col-xs-4 href="javascript:void(0);" 回复
+
+        a.col-xs-4 id="like-for-comment-#{ comment.id }" href=comment_like_path(comment) data-remote="true" data-method="post"
+          i.fa.fa-thumbs-o-up
+          span.likes-count= comment.likes.count
 
 - if comment.liked_by?(current_user)
   javascript:
