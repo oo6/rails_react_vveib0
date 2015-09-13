@@ -6,6 +6,6 @@
     
     .likes
       - @notifications.each do |notification|
-        = render 'like', like: notification.subject
+        = render 'like', like: notification.subject, name: '我'
 
     = will_paginate @notifications

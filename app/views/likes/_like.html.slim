@@ -1,3 +1,5 @@
+- name ||= like.subject.user.name
+
 .like id="like-#{ like.id }"
   .panel
     .panel-body
@@ -6,10 +8,13 @@
           img.gravatar src=portrait_url(like.user) alt=like.user.name
   
       .content
-        a href=user_path(like.user)
-          strong = like.user.name
+        - if action_name == 'inbox'
+          a href=user_path(like.user)
+            strong = like.user.name
         span
-          |  赞了我的
+          |  赞了
+          = name
+          | 的
           - if like.subject.class.to_s == 'Micropost'
             | 微博
           - else
@@ -20,7 +25,7 @@
             | @
             = like.subject.user.name
             | : 
-          a.content href=subject_path(like.subject)
+          a.subject-content href=subject_path(like.subject)
             = like.subject.content
 
         p.timestamp
