@@ -4,6 +4,6 @@
   .col-sm-9
     = render 'tabs'
 
-    ul.comments
+    .comments
       - @notifications.each do |notification|
         = render 'notifications_comment', comment: notification.subject

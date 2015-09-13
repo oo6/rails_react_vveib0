@@ -4,25 +4,28 @@
   .col-sm-9
     = render 'tabs'
 
-    ul.microposts
+    .comments
       - @notifications.each do |notification|
-        li.row id="comment-#{ notification.subject.id }"
-          .col-sm-2
-            a href=user_path(notification.subject.user.name)
-              img.gravatar src=portrait_url(notification.subject.user) alt=notification.subject.user.name
-          .col-sm-10
-            a href=user_path(notification.subject.user)
-              strong = notification.subject.user.name
-            p.comment-content
-              = content_format(notification.subject.content)
+        .comment id="comment-#{ notification.subject.id }"
+          .panel
+            .panel-body
+              .pull-left
+                a href=user_path(notification.subject.user.name)
+                  img.gravatar src=portrait_url(notification.subject.user) alt=notification.subject.user.name
 
-            span
-              | 评论
-              = notification.subject.micropost.user.name
-              | 的微博：
-            span.micropost-content
-              = content_format(notification.subject.micropost.content)
+              .content
+                a href=user_path(notification.subject.user)
+                  strong = notification.subject.user.name
+                p.comment-content
+                  = content_format(notification.subject.content)
 
-            p.timestamp
-              = time_ago_tag(notification.subject.created_at)
-              |  来自 VVeib0
+                span
+                  | 评论
+                  = notification.subject.micropost.user.name
+                  | 的微博：
+                span.micropost-content
+                  = content_format(notification.subject.micropost.content)
+
+                p.timestamp
+                  = time_ago_tag(notification.subject.created_at)
+                  |  来自 VVeib0

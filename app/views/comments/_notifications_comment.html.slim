@@ -1,26 +1,34 @@
 - name ||= '我'
 
-li.row id="comment-#{ comment.id }"
-  .col-md-2
-    a href=user_path(comment.user.name)
-      img.gravatar src=portrait_url(comment.user) alt=comment.user.name
-  .col-md-10
-    a href=user_path(comment.user.name)
-      strong = comment.user.name
-    p.comment-content
-      = content_format(comment.content)
+.comment id="comment-#{ comment.id }"
+  .panel
+    .panel-body
+      .pull-left
+        a href=user_path(comment.user.name)
+          img.gravatar src=portrait_url(comment.user) alt=comment.user.name
 
-    p.micropost-content
-      span
-        | 评论了
-        = name
-        | 的微博：
-      a href=micropost_path(comment.micropost)
-        = comment.micropost.content
+      .content
+        a href=user_path(comment.user.name)
+          strong = comment.user.name
+        p.comment-content
+          = content_format(comment.content)
 
-    p.timestamp
-      = time_ago_tag(comment.created_at)
-      |  来自 VVeib0
+        p.micropost-content
+          span
+            | 评论了
+            = name
+            | 的微博：
+          a href=micropost_path(comment.micropost)
+            = comment.micropost.content
 
-  a.col-xs-6 href="javascript:void(0);" 查看对话
-  a.col-xs-6 href="javascript:void(0);" 回复
+        p.timestamp
+          = time_ago_tag(comment.created_at)
+          |  来自 VVeib0
+
+    .panel-footer
+      .row
+        a.col-xs-4 href="javascript:void(0);" 查看对话
+        a.col-xs-4 href="javascript:void(0);" 回复
+        a.col-xs-4 id="like-for-comment-#{ comment.id }" href=comment_like_path(comment) data-remote="true" data-method="post"
+          i.fa.fa-thumbs-o-up
+          span.likes-count= comment.likes.count

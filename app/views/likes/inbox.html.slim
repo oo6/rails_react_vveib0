@@ -4,7 +4,7 @@
   .col-sm-9
     = render 'tabs'
     
-    ul.likes
+    .likes
       - @notifications.each do |notification|
         = render 'like', like: notification.subject
 

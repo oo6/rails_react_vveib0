@@ -5,8 +5,7 @@ class CommentsController < ApplicationController
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.new comment_params.merge(user: current_user)
     if @comment.save
-      Notification.create(user: @micropost.user, subject: @comment, name: 'comment')
-
+      @comment.notifications.create(user: @micropost.user, name: 'comment') if current_user != @micropost.user
       @comment.create_mention_notification
 
       respond_to do |format|

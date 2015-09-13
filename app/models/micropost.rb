@@ -4,6 +4,7 @@ class Micropost < ActiveRecord::Base
 
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
+  has_many :notifications, as: 'subject', dependent: :delete_all
 
   default_scope -> { order(created_at: :desc) }
 

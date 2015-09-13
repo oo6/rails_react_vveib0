@@ -4,6 +4,6 @@
   .col-sm-9
     = render 'tabs'
 
-    ul.microposts
+    .microposts
       - @notifications.each do |notification|
         = render 'microposts/micropost', micropost: notification.subject
