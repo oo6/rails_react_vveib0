@@ -1,4 +1,3 @@
-= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
-            html: { method: :delete },
-            remote: true) do |f|
-  = f.submit "Unfollow", class: "btn"
+- user ||= @user
+
+a.btn.btn-danger.btn-block href=user_unfollow_path(user.name) data-method='delete' data-remote="true" 不关注他了~

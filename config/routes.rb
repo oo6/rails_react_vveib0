@@ -32,6 +32,9 @@ Rails.application.routes.draw do
 
     get :following, to: 'users#following', as: 'following'
     get :followers, to: 'users#followers', as: 'followers'
+
+    post :follow, to: 'relationships#create', as: 'follow'
+    delete :unfollow, to: 'relationships#destroy', as: 'unfollow'
   end
 
   resources :account_activations, only: [:index]
@@ -51,8 +54,6 @@ Rails.application.routes.draw do
       get :inbox, :outbox
     end
   end
-
-  resources :relationships, only: [:create, :destroy]
 
   resources :notifications, only: [:index, :destroy] do
     collection do

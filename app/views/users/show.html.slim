@@ -2,9 +2,7 @@
 
 .row
   .col-sm-3
-    = render 'shared/user_info'
-    section.follow-form
-      = render 'follow_form' if logged_in?
+    = render 'sidebar'
 
   .col-sm-9
     - if @user.microposts.any?

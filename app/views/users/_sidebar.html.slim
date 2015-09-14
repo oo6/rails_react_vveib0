@@ -1,0 +1,10 @@
+= render 'shared/user_info'
+    
+- unless current_user?(@user)
+  .panel class="user-#{ @user.id }"
+    .panel-body
+      .follow-or-unfollow
+        - if current_user.following?(@user)
+          = render 'unfollow'
+        - else
+          = render 'follow'

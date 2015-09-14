@@ -1,11 +1,12 @@
 = provide :title, @title
-row
+
+.row
   .col-sm-3
-    = render "shared/user_info"
+    = render "sidebar"
 
   .col-sm-9
     - if @users.any?
-      ul.follow
+      .follow
         = render @users
 
       = will_paginate
