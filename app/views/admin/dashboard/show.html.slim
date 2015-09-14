@@ -1,78 +1,80 @@
 h1 数据统计
 
-.col-sm-3
-  .list-group
-    a.list-group-item class=('active' if action_name == 'past_day') href=admin_root_path
-      .pull-right
-        i.fa.fa-chevron-right
-      | 最近一天
-    a.list-group-item class=('active' if action_name == 'past_week') href=admin_past_week_path
-      .pull-right
-        i.fa.fa-chevron-right
-      | 最近一周
-    a.list-group-item class=('active' if action_name == 'past_month') href=admin_past_month_path
-      .pull-right
-        i.fa.fa-chevron-right
-      | 最近一个月
-    a.list-group-item class=('active' if action_name == 'past_year') href=admin_past_year_path
-      .pull-right
-        i.fa.fa-chevron-right
-      | 最近一年
+.row
+  .col-sm-3
+    .list-group
+      a.list-group-item class=('active' if action_name == 'past_day') href=admin_root_path
+        .pull-right
+          i.fa.fa-chevron-right
+        | 最近一天
+      a.list-group-item class=('active' if action_name == 'past_week') href=admin_past_week_path
+        .pull-right
+          i.fa.fa-chevron-right
+        | 最近一周
+      a.list-group-item class=('active' if action_name == 'past_month') href=admin_past_month_path
+        .pull-right
+          i.fa.fa-chevron-right
+        | 最近一个月
+      a.list-group-item class=('active' if action_name == 'past_year') href=admin_past_year_path
+        .pull-right
+          i.fa.fa-chevron-right
+        | 最近一年
 
-.col-sm-9
-  .col-sm-6.col-lg-3
-    .panel.panel-info
-      .panel-heading
-        .row
-          .col-xs-3
-            i.fa.fa-user.fa-3x
-          .col-xs-9.text-right
-            h2
-              = @user_count
-            p.new New Users!
-      a.users href=""
-        = render 'panel_footer'
-          
-  .col-sm-6.col-lg-3
-    .panel.panel-danger
-      .panel-heading
-        .row
-          .col-xs-3
-            i.fa.fa-weibo.fa-3x
-          .col-xs-9.text-right
-            h2
-              = @micropost_count
-            p.new New Microposts!
-      a.microposts href=""
-        = render 'panel_footer'
-          
-  .col-sm-6.col-lg-3
-    .panel.panel-success
-      .panel-heading
-        .row
-          .col-xs-3
-            i.fa.fa-comment.fa-3x
-          .col-xs-9.text-right
-            h2
-              = @comment_count
-            p.new New Comments!
-      a.comments href=""
-        = render 'panel_footer'
-          
-  .col-sm-6.col-lg-3
-    .panel.panel-warning
-      .panel-heading
-        .row
-          .col-xs-3
-            i.fa.fa-thumbs-o-up.fa-3x
-          .col-xs-9.text-right
-            h2
-              = @like_count
-            p.new New Likes!
-      a.likes href=""
-        = render 'panel_footer'
-          
+  .col-sm-9
+    .row
+      .col-sm-6.col-lg-3
+        .panel.panel-info
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-user.fa-3x
+              .col-xs-9.text-right
+                h2
+                  = @user_count
+                p.new New Users!
+          a.users href=""
+            = render 'panel_footer'
+              
+      .col-sm-6.col-lg-3
+        .panel.panel-danger
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-weibo.fa-3x
+              .col-xs-9.text-right
+                h2
+                  = @micropost_count
+                p.new New Microposts!
+          a.microposts href=""
+            = render 'panel_footer'
+              
+      .col-sm-6.col-lg-3
+        .panel.panel-success
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-comment.fa-3x
+              .col-xs-9.text-right
+                h2
+                  = @comment_count
+                p.new New Comments!
+          a.comments href=""
+            = render 'panel_footer'
+              
+      .col-sm-6.col-lg-3
+        .panel.panel-warning
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-thumbs-o-up.fa-3x
+              .col-xs-9.text-right
+                h2
+                  = @like_count
+                p.new New Likes!
+          a.likes href=""
+            = render 'panel_footer'
+              
 
-  / #line-chart class="#{ action_name }"
-  /   #line-chart-users
-  /   #line-chart-microposts
+      / #line-chart class="#{ action_name }"
+      /   #line-chart-users
+      /   #line-chart-microposts
