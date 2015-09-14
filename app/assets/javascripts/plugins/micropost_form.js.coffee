@@ -2,7 +2,7 @@ characterPrompt = (length, selector) ->
   p = $(selector + ' .characterPrompt')
   button = $(selector + ' .create-micropost')
   max = 140
-  if length >= max
+  if length > max
     p.text '已经到达最大输入字数'
     button.addClass 'disabled'
   else
