@@ -7,11 +7,11 @@ module Mentionable
   end
 
   def create_mention_notification
+    Notification.create(user: self.user, subject: self, name: 'mention', read: true) if mention_users.include?(self.user)
+
     users = mention_users - [self.user]
     users.each do |user|
       Notification.create(user: user, subject: self, name: 'mention')
     end
-
-    Notification.create(user: self.user, subject: self, name: 'mention', read: true)
   end
 end
