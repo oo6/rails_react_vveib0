@@ -50,6 +50,10 @@ gem 'active_model_serializers', '0.9.3'
 
 gem 'grape-active_model_serializers', '1.3.2'
 
+gem 'sidekiq', '3.4.2'
+
+gem 'sinatra', '1.4.5'
+
 group :development do
   gem 'byebug', '3.5.1'
 

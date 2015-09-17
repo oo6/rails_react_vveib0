@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
 
   # 发送激活邮件
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    UserMailer.account_activation(self).deliver_later
   end
 
   # 设置密码重设相关的属性
@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
 
   # 发送密码重设邮件
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver_later
   end
 
   def password_reset_expired?
