@@ -50,7 +50,10 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:create]
 
-    get 'get_last_five_comments', on: :member
+    member do
+      get 'get_last_five_comments'
+      post :expand, to: 'microposts#create'
+    end
   end
 
   resources :comments, only: [:destroy], concerns: [:likeable] do

@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
-    @micropost = current_user.microposts.new(micropost_params)
+    @micropost = current_user.microposts.new(micropost_params.merge(source_id: params[:id]))
     if @micropost.save
       @micropost.create_mention_notification
 

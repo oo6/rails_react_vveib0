@@ -2,3 +2,13 @@ $(".microposts").prepend('<%= j render @micropost %>')
 $(".micropost-form .micropost_content").val('')
 
 $("#microposts-count").html('<%= current_user.microposts.count %>')
+
+$(".modal").modal('hide')
+
+swal({
+  type: 'success',
+  title: "发布成功",
+  text: "两秒后自动关闭",
+  timer: 2000,
+  showConfirmButton: true
+})

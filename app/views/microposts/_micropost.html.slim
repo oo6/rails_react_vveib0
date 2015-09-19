@@ -1,40 +1,129 @@
 .micropost id="micropost-#{ micropost.id }"
-  .panel
-    .panel-body
-      .pull-left
-        a href=user_path(micropost.user.name)
-          img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
+  - if micropost.is_expand?
+    .panel
+      .panel-body
+        .pull-left
+          a href=user_path(micropost.user.name)
+            img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
 
-      .content
-        a href=user_path(micropost.user.name)
-          strong = micropost.user.name
+        .content
+          a href=user_path(micropost.user.name)
+            strong = micropost.user.name
 
-        - if current_user?(micropost.user)
-          a.delete.pull-right href=micropost_path(micropost) data-method='delete' data-remote="true"
-            i.fa.fa-trash-o
+          p.micropost-content
+            = content_format(micropost.content)
+          
+          - source_micropost = micropost.source
 
-        p.micropost-content
-          = content_format(micropost.content)
-        - if micropost.picture?
-          img src=micropost.picture.url alt=""
-        p.timestamp
-          = time_ago_tag(micropost.created_at)
-          |  来自 vveib0
+          .source-content
+            a href=user_path(source_micropost.user.name)
+              | @
+              strong = source_micropost.user.name
 
-        
-    .panel-footer
-      .row
-        a.col-xs-4 href="javascript:void(0);" 转发
+            p.source-micropost-content
+              = content_format(source_micropost.content)
 
-        a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
-          | 评论 
-          span.comments-count= micropost.comments.count
+            - if source_micropost.picture?
+              img src=source_micropost.picture.url alt=""
 
-        a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
-          i.fa.fa-thumbs-o-up
-          span.likes-count= micropost.likes.count
+            p.timestamp
+              = time_ago_tag(source_micropost.created_at)
+              |  来自 vveib0
 
-        ul class="micropost-#{ micropost.id }-comments comments"
+              span.pull-right
+                a href=micropost_path(source_micropost) 转发 
+
+                a.comment display="false" content="#{ source_micropost.id }" href="javascript:void(0);"
+                  | 评论 
+                  span.comments-count= source_micropost.comments.count
+                  |  
+
+                a id="like-for-micropost-#{ source_micropost.id }" href=micropost_like_path(source_micropost) data-remote="true" data-method="post"
+                  i.fa.fa-thumbs-o-up
+                  span.likes-count= source_micropost.likes.count
+
+          p.timestamp
+            = time_ago_tag(micropost.created_at)
+            |  来自 vveib0
+
+            - if current_user?(micropost.user)
+              a.delete.pull-right href=micropost_path(micropost) data-method='delete' data-remote="true"
+                i.fa.fa-trash-o
+
+      .panel-footer
+        .row
+          a.col-xs-4 href="javascript:void(0);"  data-toggle="modal" data-target=".expand-micropost-form-modal-#{ micropost.id }" 转发 
+
+          a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
+            | 评论 
+            span.comments-count= micropost.comments.count
+
+          a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
+            i.fa.fa-thumbs-o-up
+            span.likes-count= micropost.likes.count
+
+          ul class="micropost-#{ micropost.id }-comments comments"
+
+      .modal.fade class="expand-micropost-form-modal-#{ micropost.id }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close type="button" data-dismiss="modal" aria-hidden="true"
+                i.fa.fa-times
+              h4.modal-title#myModalLabel 转发微博
+            .modal-body
+              p.source-micropost
+                a href=user_path(source_micropost.user.name)
+                  | @
+                  = source_micropost.user.name
+                  | : 
+                span
+                  = source_micropost.content
+              
+              = form_for current_user.microposts.new, url: expand_micropost_path(source_micropost), remote: true do |f|
+                
+                .form-group
+                  = f.text_area :content, class: 'form-control expand_micropost_content', rows: 3, maxlength: 140, value: "//@#{ micropost.user.name }: #{ micropost.content }"
+
+                = f.submit "发送", class: 'btn btn-success', 'data-disable-with' => "发送"
+
+  - else
+    .panel
+      .panel-body
+        .pull-left
+          a href=user_path(micropost.user.name)
+            img.gravatar src=portrait_url(micropost.user) alt=micropost.user.name
+
+        .content
+          a href=user_path(micropost.user.name)
+            strong = micropost.user.name
+
+          - if current_user?(micropost.user)
+            a.delete.pull-right href=micropost_path(micropost) data-method='delete' data-remote="true"
+              i.fa.fa-trash-o
+
+          p.micropost-content
+            = content_format(micropost.content)
+          - if micropost.picture?
+            img src=micropost.picture.url alt=""
+          p.timestamp
+            = time_ago_tag(micropost.created_at)
+            |  来自 vveib0
+
+          
+      .panel-footer
+        .row
+          a.col-xs-4 href="javascript:void(0);" 转发
+
+          a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
+            | 评论 
+            span.comments-count= micropost.comments.count
+
+          a.col-xs-4 id="like-for-micropost-#{ micropost.id }" href=micropost_like_path(micropost) data-remote="true" data-method="post"
+            i.fa.fa-thumbs-o-up
+            span.likes-count= micropost.likes.count
+
+          ul class="micropost-#{ micropost.id }-comments comments"
 
 - if micropost.liked_by?(current_user)
   javascript:
