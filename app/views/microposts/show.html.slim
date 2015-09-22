@@ -37,6 +37,15 @@
 
       = will_paginate @comments
 
+  .modal.fade class="comment-dialogue-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-hidden="true"
+            i.fa.fa-times
+          h4.modal-title#myModalLabel 查看对话
+        .modal-body
+
 - if @micropost.liked_by?(current_user)
   javascript:
     Likes.updateLike('micropost', #{ @micropost.id });

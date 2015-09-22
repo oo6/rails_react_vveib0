@@ -38,6 +38,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     ansi (1.5.0)
     arel (6.0.0)
     axiom-types (0.1.1)
@@ -301,6 +303,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (= 0.9.3)
+  ancestry (= 2.1.0)
   bcrypt (= 3.1.9)
   bootstrap-will_paginate (= 0.0.10)
   by_star (= 2.2.1)

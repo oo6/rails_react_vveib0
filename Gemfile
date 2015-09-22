@@ -54,6 +54,8 @@ gem 'sidekiq', '3.4.2'
 
 gem 'sinatra', '1.4.5'
 
+gem 'ancestry', '2.1.0'
+
 group :development do
   gem 'byebug', '3.5.1'
 

@@ -29,7 +29,7 @@ more_comments_html = """
 """
 
 $(document)
-  .on 'click', '.comment', ->
+  .on 'click', '.create-comment', ->
     display = $(this).attr('display')
     micropost_id = $(this).attr('content')
     class_name = '.micropost-' + micropost_id + '-comments'

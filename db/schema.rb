@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919061905) do
+ActiveRecord::Schema.define(version: 20150921105100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 20150919061905) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "likes_count",  default: 0
+    t.string   "ancestry"
   end
 
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   add_index "comments", ["micropost_id", "created_at"], name: "index_comments_on_micropost_id_and_created_at", using: :btree
   add_index "comments", ["micropost_id"], name: "index_comments_on_micropost_id", using: :btree
   add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree

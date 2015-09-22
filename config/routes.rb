@@ -60,6 +60,11 @@ Rails.application.routes.draw do
     collection do
       get :inbox, :outbox
     end
+
+    member do
+      post :reply
+      get :ancestors
+    end
   end
 
   resources :notifications, only: [:index, :destroy] do

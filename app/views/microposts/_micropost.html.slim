@@ -52,9 +52,9 @@
 
       .panel-footer
         .row
-          a.col-xs-4 href="javascript:void(0);"  data-toggle="modal" data-target=".expand-micropost-form-modal-#{ micropost.id }" 转发 
+          a.col-xs-4 href="javascript:void(0);" data-toggle="modal" data-target=".expand-micropost-form-modal-#{ micropost.id }" 转发 
 
-          a.col-xs-4.comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
+          a.col-xs-4.create-comment display="false" content="#{ micropost.id }" href="javascript:void(0);"
             | 评论 
             span.comments-count= micropost.comments.count
 

@@ -1,0 +1,4 @@
+$(".comment-dialogue-modal .modal-body").empty()
+$(".comment-dialogue-modal .modal-body").prepend('<%= j render @comments %>')
+
+$(".comment-dialogue-modal").modal('show')

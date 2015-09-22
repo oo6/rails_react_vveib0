@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   include Likeable
   include Mentionable
 
+  has_ancestry
+
   belongs_to :user
   belongs_to :micropost, counter_cache: true
   has_many :notifications, as: 'subject', dependent: :delete_all

@@ -32,6 +32,28 @@ class CommentsController < ApplicationController
     @comments = current_user.comments.paginate(page: params[:page])
   end
 
+  def reply
+    @comment = Comment.find params[:id]
+    @children = @comment.children.new comment_params.merge(user: current_user).merge(micropost: @comment.micropost)
+    if @children.save
+      # @comment.notifications.create(user: @micropost.user, name: 'comment') if current_user != @micropost.user
+      # @comment.create_mention_notification
+
+      respond_to do |format|
+        format.html { redirect_to @comment.micropost }
+        format.js
+      end
+    end
+  end
+
+  def ancestors
+    comment = Comment.find params[:id]
+    @comments = comment.path
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def comment_params
       params.require(:comment).permit(:content)
