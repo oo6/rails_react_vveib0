@@ -1,3 +1,3 @@
 class UserDetailSerializer < UserInfoSerializer
-  attributes  :email, :created_at
+  attributes :microposts_count, :following_count, :followers_count
 end
