@@ -34,5 +34,44 @@ module V1
       authenticate!
       render current_user.feed.includes(:user).paginate(page: params[:page])
     end
+
+    desc "用户注册"
+    params do
+      requires :name, type: String
+      requires :email, type: String
+      requires :password, type: String
+      requires :password_confirmation, type: String
+    end
+    post :signup do
+      @user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+      if @user.save
+        access_token = User.new_token
+        @user.update_attribute :access_token, access_token
+
+        { access_token: access_token }
+      else
+        { error: @user.errors.full_messages }
+      end
+    end
+
+    desc "判断 name_or_email 是否可用"
+    params do
+      requires :name_or_email, type: String
+    end
+    get :test, root: 'user' do
+      if params[:name_or_email].include?('@')
+        if @user = User.find_by(email: params[:name_or_email])
+          render @user
+        else
+          { ok: 1 }
+        end
+      else
+        if @user = User.find_by(name: params[:name_or_email])
+          render @user
+        else
+          { ok: 1 }
+        end
+      end
+    end
   end
 end
