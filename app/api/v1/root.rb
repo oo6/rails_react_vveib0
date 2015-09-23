@@ -20,7 +20,7 @@ module V1
         access_token = User.new_token
         @user.update_attribute :access_token, access_token
 
-        { access_token: access_token }
+        { access_token: access_token, current_user_name: @user.name }
       else
         error!('401 Unauthenticated', 401)
       end
@@ -49,7 +49,7 @@ module V1
         access_token = User.new_token
         @user.update_attribute :access_token, access_token
 
-        { access_token: access_token }
+        { access_token: access_token, current_user_name: @user.name }
       else
         { error: @user.errors.full_messages }
       end
