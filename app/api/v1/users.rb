@@ -26,7 +26,7 @@ module V1
         end
         post :follow do
           authenticate!
-          current_user.follow(@user)
+          current_user.follow(@user) unless current_user.following?(@user)
           { ok: 1 }
         end
 
@@ -34,9 +34,9 @@ module V1
         params do
           requires :access_token, type: String
         end
-        post :unfollow do
+        delete :follow do
           authenticate!
-          current_user.unfollow(@user)
+          current_user.unfollow(@user) if current_user.following?(@user)
           { ok: 1 }
         end
       end

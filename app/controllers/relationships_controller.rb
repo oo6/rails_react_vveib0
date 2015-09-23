@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:name])
-    current_user.follow(@user)
+    current_user.follow(@user) unless current_user.following?(@user)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @user = User.find_by(name: params[:name])
-    current_user.unfollow(@user)
+    current_user.unfollow(@user) if current_user.following?(@user)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
