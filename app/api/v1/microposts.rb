@@ -44,6 +44,21 @@ module V1
             error!({ error: @comment.errors.full_messages }, 400)
           end
         end
+
+        desc "转发某条微博"
+        params do
+          requires :access_token, type: String
+          requires :content, type: String
+        end
+        post :expands, serializer: MicropostExpandSerializer do
+          authenticate!
+          @micropost = current_user.microposts.new(content: params[:content], source_id: params[:id])
+          if @micropost.save
+            render @micropost
+          else
+            error!({ error: @micropost.errors.full_messages }, 400)
+          end
+        end
       end
     end
   end
