@@ -16,7 +16,7 @@ module V1
         params do
           optional :page, type: Integer, default: 1
         end
-        get :microposts, each_serializer: MicropostSerializer, root: 'microposts' do
+        get :microposts, each_serializer: MicropostDetailSerializer, root: 'microposts' do
           render @user.microposts.paginate(page: params[:page])
         end
 

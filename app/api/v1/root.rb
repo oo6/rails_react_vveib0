@@ -31,7 +31,7 @@ module V1
       requires :access_token, type: String
       optional :page, type: Integer, default: 1
     end
-    get :home_feed, each_serializer: MicropostSerializer, root: 'microposts' do
+    get :home_feed, each_serializer: MicropostDetailSerializer, root: 'microposts' do
       authenticate!
       render current_user.feed.includes(:user).paginate(page: params[:page])
     end

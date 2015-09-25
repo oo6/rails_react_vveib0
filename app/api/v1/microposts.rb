@@ -6,7 +6,7 @@ module V1
         requires :access_token, type: String
         requires :content, type: String
       end
-      post '', serializer: MicropostSerializer, root: 'micropost' do
+      post '', serializer: MicropostDetailSerializer, root: 'micropost' do
         authenticate!
         @micropost = current_user.microposts.new(content: params[:content])
         if @micropost.save
