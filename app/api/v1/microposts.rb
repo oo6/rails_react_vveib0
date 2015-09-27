@@ -22,6 +22,11 @@ module V1
           correct_find!(@micropost)
         end
 
+        desc  "获取某条微博"
+        get '', serializer: MicropostDetailSerializer, root: 'micropost' do
+          render @micropost
+        end
+
         desc "获取某条微博的评论列表"
         params do
           optional :page, type: Integer, default: 1
