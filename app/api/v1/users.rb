@@ -15,6 +15,7 @@ module V1
         desc "获取某个用户发布的微博"
         params do
           optional :page, type: Integer, default: 1
+          optional :access_token, type: String
         end
         get :microposts, each_serializer: MicropostDetailSerializer, root: 'microposts' do
           render @user.microposts.paginate(page: params[:page])

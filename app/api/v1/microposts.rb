@@ -23,6 +23,9 @@ module V1
         end
 
         desc  "获取某条微博"
+        params do
+          optional :access_token, type: String
+        end
         get '', serializer: MicropostDetailSerializer, root: 'micropost' do
           render @micropost
         end
@@ -30,6 +33,7 @@ module V1
         desc "获取某条微博的评论列表"
         params do
           optional :page, type: Integer, default: 1
+          optional :access_token, type: String
         end
         get :comments, each_serializer: CommentSerializer, root: 'comments' do
           render @micropost.comments.includes(:user).paginate(page: params[:page])
