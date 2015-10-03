@@ -49,7 +49,7 @@ module V1
           authenticate!
           @comment = @micropost.comments.new(content: params[:content], user: current_user)
           if @comment.save
-            current_user.microposts.new(content: params[:content], source_id: params[:id]) if params[:same_time_expand]
+            current_user.microposts.create(content: params[:content], source_id: params[:id]) if params[:same_time_expand]
             render @comment
           else
             error!({ error: @comment.errors.full_messages }, 400)
