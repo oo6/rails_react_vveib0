@@ -43,11 +43,13 @@ module V1
         params do
           requires :access_token, type: String
           requires :content, type: String
+          optional :same_time_expand, type: Boolean
         end
         post :comments, serializer: CommentSerializer, root: 'comment' do
           authenticate!
           @comment = @micropost.comments.new(content: params[:content], user: current_user)
           if @comment.save
+            current_user.microposts.new(content: params[:content], source_id: params[:id]) if params[:same_time_expand]
             render @comment
           else
             error!({ error: @comment.errors.full_messages }, 400)
