@@ -1,75 +1,75 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.0.beta1'
 
-gem 'pg', '0.18.1'
+gem 'pg'
 
-gem 'bcrypt', '3.1.9'
+gem 'bcrypt'
 
-gem 'faker', '1.4.3'
+gem 'faker'
 
-gem 'will_paginate', '3.0.7'
+gem 'will_paginate'
 
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'bootstrap-will_paginate'
 
-gem 'carrierwave', '0.10.0'
+gem 'carrierwave'
 
-gem 'mini_magick', '4.1.0'
+gem 'mini_magick'
 
-gem 'slim-rails', '3.0.1'
+gem 'slim-rails'
 
-gem 'sass-rails', '5.0.1'
+gem 'sass-rails'
 
-gem 'uglifier', '2.7.0'
+gem 'uglifier'
 
-gem 'coffee-rails', '4.1.0'
+gem 'coffee-rails'
 
-gem 'jquery-rails', '4.0.3'
+gem 'jquery-rails'
 
-gem 'turbolinks', '2.5.3'
+gem 'turbolinks'
 
-gem 'jbuilder', '2.2.6'
+gem 'jbuilder'
 
-gem 'pry-rails', '0.3.2'
+gem 'pry-rails'
 
-gem 'puma', '2.11.3'
+gem 'puma'
 
-gem 'by_star', '2.2.1'
+gem 'by_star'
 
-gem 'sdoc', '0.4.1', group: :doc
+gem 'sdoc', group: :doc
 
-gem 'omniauth', '1.2.2'
+gem 'omniauth'
 
-gem 'omniauth-github', '1.1.2'
+gem 'omniauth-github'
 
-gem 'jquery-atwho-rails', '1.3.2'
+gem 'jquery-atwho-rails'
 
-gem 'grape', '0.12.0'
+gem 'grape'
 
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers'
 
-gem 'grape-active_model_serializers', '1.3.2'
+gem 'grape-active_model_serializers'
 
-gem 'sidekiq', '3.4.2'
+gem 'sidekiq'
 
-gem 'sinatra', '1.4.5'
+gem 'sinatra', :git => 'git@github.com:sinatra/sinatra.git', :branch => '2.2.0-alpha'
 
-gem 'ancestry', '2.1.0'
+gem 'ancestry'
 
 group :development do
-  gem 'byebug', '3.5.1'
+  gem 'byebug'
 
-  gem 'web-console', '2.0.0'
+  gem 'web-console'
 
-  gem 'spring', '1.3.4'
+  gem 'spring'
 end
 
 group :test do
-  gem 'minitest-reporters', '1.0.10'
+  gem 'minitest-reporters'
 
-  gem 'mini_backtrace', '0.1.3'
+  gem 'mini_backtrace'
 
-  gem 'guard-minitest', '2.4.3'
+  gem 'guard-minitest'
 
-  gem 'guard', '2.13.0'
+  gem 'guard'
 end
