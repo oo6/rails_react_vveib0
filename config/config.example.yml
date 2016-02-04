@@ -14,9 +14,9 @@ default: &default
     default_url_options:
       # host: localhost:3000
 
-    omniauth:
-      # github_id:
-      # github_secret:
+  omniauth:
+    # github_id:
+    # github_secret:
 
 development:
   <<: *default
