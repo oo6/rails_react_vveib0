@@ -12,8 +12,8 @@
 !/log/.keep
 /tmp
 
-# Ignore bower components
-/vendor/bower
+# Ignore node dependency directory
+node_modules
 
 # Ignore images uploads
 /public/uploads
