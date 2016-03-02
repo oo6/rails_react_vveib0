@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         login_params[:remember_me] == '1' ? remember(user) : forget(user)
         redirect_back_or root_url
       else
-        message  = "账户没有被激活，请注意查收邮件以激活或联系客服激活！"
+        message = "账户没有被激活，请注意查收邮件以激活或联系客服激活！"
         flash[:warning] = message
         redirect_to root_url
       end

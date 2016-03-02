@@ -56,6 +56,8 @@ gem 'sinatra', :git => 'git@github.com:sinatra/sinatra.git', :branch => '2.2.0-a
 
 gem 'ancestry'
 
+gem 'rack-cors'
+
 group :development do
   gem 'byebug'
 
