@@ -33,7 +33,7 @@
               span.pull-right
                 a href=micropost_path(source_micropost) 转发 
 
-                a.comment display="false" content="#{ source_micropost.id }" href="javascript:void(0);"
+                a href=micropost_path(source_micropost)
                   | 评论 
                   span.comments-count= source_micropost.comments.count
                   |  

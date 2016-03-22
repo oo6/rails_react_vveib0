@@ -23,7 +23,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    
+
     respond_to do |format|
       format.html do
         flash[:success] = "微博已删除！"

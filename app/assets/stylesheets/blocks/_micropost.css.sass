@@ -1,4 +1,4 @@
-.micropost  
+.micropost
   .gravatar
     border-radius: 100%
 
@@ -6,7 +6,8 @@
     color: $alert-color
 
   .content
-    padding-left: 95px
+    margin-left: 95px
+    position: relative
 
     a:hover
       color: $hover-color
@@ -19,9 +20,19 @@
       width: 100%
 
     .source-content
-      background: #F5F5F5
+      background: #F2F2F5
       padding: 20px
       margin-top: 10px
+
+      &:before
+        content: ''
+        display: block
+        border-top: 10px solid transparent
+        border-right: 10px solid transparent
+        border-bottom: 10px solid #F2F2F5
+        border-left: 10px solid transparent
+        position: absolute
+        top: 40px
 
   .panel-footer
     text-align: center
