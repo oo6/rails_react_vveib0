@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921105100) do
+ActiveRecord::Schema.define(version: 20160323104550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,8 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true, using: :btree
   end
-
-  add_index "authentications", ["uid", "provider"], name: "index_authentications_on_uid_and_provider", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -34,13 +33,12 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.datetime "updated_at",               null: false
     t.integer  "likes_count",  default: 0
     t.string   "ancestry"
+    t.index ["ancestry"], name: "index_comments_on_ancestry", using: :btree
+    t.index ["micropost_id", "created_at"], name: "index_comments_on_micropost_id_and_created_at", using: :btree
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id", using: :btree
+    t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
-
-  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
-  add_index "comments", ["micropost_id", "created_at"], name: "index_comments_on_micropost_id_and_created_at", using: :btree
-  add_index "comments", ["micropost_id"], name: "index_comments_on_micropost_id", using: :btree
-  add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,10 +46,9 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.string   "subject_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["subject_type", "subject_id"], name: "index_likes_on_subject_type_and_subject_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
-
-  add_index "likes", ["subject_type", "subject_id"], name: "index_likes_on_subject_type_and_subject_id", using: :btree
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -62,10 +59,9 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.integer  "comments_count", default: 0
     t.integer  "likes_count",    default: 0
     t.integer  "source_id",      default: 0
+    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end
-
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
-  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -75,22 +71,30 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.boolean  "read",         default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject_type_and_subject_id", using: :btree
+    t.index ["user_id", "created_at"], name: "index_notifications_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
-
-  add_index "notifications", ["subject_type", "subject_id"], name: "index_notifications_on_subject_type_and_subject_id", using: :btree
-  add_index "notifications", ["user_id", "created_at"], name: "index_notifications_on_user_id_and_created_at", using: :btree
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+  create_table "topics", force: :cascade do |t|
+    t.string   "content"
+    t.text     "guide"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content"], name: "index_topics_on_content", using: :btree
+    t.index ["user_id"], name: "index_topics_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -111,9 +115,8 @@ ActiveRecord::Schema.define(version: 20150921105100) do
     t.integer  "microposts_count",             default: 0
     t.integer  "following_count",              default: 0
     t.integer  "followers_count",              default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "authentications", "users"
   add_foreign_key "comments", "microposts"

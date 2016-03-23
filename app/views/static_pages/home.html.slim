@@ -2,6 +2,20 @@
   .row
     .col-sm-3
       = render 'shared/user_info'
+      
+      .panel
+        .panel-heading
+          p.title 热门话题
+        .panel-body
+          - @topics.each do |t|
+            p
+              a href=topic_path(t.content)
+                | #
+                = t.content
+                | #
+              span.pull-right 20万
+        .panel-footer
+          a href=topics_path 查看更多 >
 
     .col-sm-9
       .panel

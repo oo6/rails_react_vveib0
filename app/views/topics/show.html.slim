@@ -1,0 +1,53 @@
+.row
+  .col-sm-3
+    .panel
+      .panel-body
+        .row
+          span.col-xs-4
+            strong#following 57.5亿
+            br
+            | 阅读
+          span.col-xs-4
+            strong#followers 505万
+            br
+            | 讨论
+          span.col-xs-4
+            strong#microposts-count 21.5万
+            br
+            | 粉丝
+      
+    .panel
+      .panel-heading
+        p.title 话题主持人
+      .panel-body
+        a href=user_path(@topic.user.name)
+          img.gravatar src=portrait_url(@topic.user) alt=@topic.user.name
+          p
+            = @topic.user.name
+    
+    .panel
+      .panel-heading
+        p.title 最新参与用户
+      .panel-body
+        p 未完待续。。。
+    
+    .panel
+      .panel-body
+        p 话题主持人可以管理话题内容，汇聚更多精彩微博，让你的观点被更多人所知晓。更多问题请参考：
+        a href=help_path 常见问题
+        br
+        a href=contact_path 联系我们
+          
+  .col-sm-9
+    .panel
+      .panel-heading
+        p
+          strong 导语：
+          = @topic.guide
+      .panel-body
+        a href=user_path(current_user.name)
+          img.gravatar src=portrait_url(current_user) alt=current_user.name
+    
+    .panel
+      .panel-body
+        p 主持人推荐

@@ -73,6 +73,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :topics, except: [:show]
+
+  scope path: '/topics/:content', as: 'topic' do
+    root 'topics#show'
+  end
+
   scope :mentions do
     get :micropost, to: 'mentions#micropost', as: 'micropost_mentions'
     get :comment, to: 'mentions#comment', as: 'comment_mentions'

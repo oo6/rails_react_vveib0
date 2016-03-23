@@ -1,0 +1,45 @@
+.row
+  .col-sm-3
+    .panel
+      .panel-body
+        a href='javascript:void(0);'
+          i.fa.fa-file-text-o
+          | 创建话题
+
+          span.pull-right
+            i.fa.fa-chevron-right
+            
+    .panel
+      .panel-heading
+        p 我的话题
+      .panel-body
+        - current_user.topics.each do |t|
+          p
+            a href=topic_path(t.content)
+              | #
+              = t.content
+              | #
+            span.pull-right 20万
+  
+  .col-sm-9
+    .panel
+      .panel-heading
+        h3.title 热门话题
+      .panel-body
+        - @topics.each do |t|
+          a href=topic_path(t.content)
+            strong
+              | #
+              = t.content
+              | #
+          p = t.guide
+          p
+            | 阅读数：20万 
+            |  主持人：
+            a href=user_path(t.user.name)
+              = t.user.name
+          
+          hr
+
+/ - @topics.each do |t|
+/   = t.content

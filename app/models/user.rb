@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :topics, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -18,15 +19,15 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 50, minimum: 1 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, 
+  validates :email, presence: true, length: { maximum: 255 },
                                     format: { with: VALID_EMAIL_REGEX },
                                     uniqueness: { case_sensitive: false }
   # uniqueness: { case_sensitive: false }, 唯一, 不区分大小写
   validates :password, length: { minimum: 6 }, allow_blank: true
-  
+
   has_secure_password
 
-  # 返回制定字符串的哈希摘要 
+  # 返回制定字符串的哈希摘要
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
