@@ -11,6 +11,8 @@ class Micropost < ActiveRecord::Base
                           foreign_key: "source_id"
   belongs_to :source, class_name: "Micropost"
 
+  has_many :topic_relationships, as: 'subject', dependent: :delete_all
+
   default_scope -> { order(created_at: :desc) }
 
   mount_uploader :picture, PictureUploader

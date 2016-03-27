@@ -5,8 +5,15 @@ class MicropostsController < ApplicationController
   def create
     micropost_params.merge!(source_id: params[:id]) if params[:id]
     @micropost = current_user.microposts.new(micropost_params)
+
     if @micropost.save
       @micropost.create_mention_notification
+
+      # 创建话题
+      @micropost.content.scan(/#([\w]+|[\u4e00-\u9fa5]+)#/) do |match|
+        topic = current_user.topics.find_or_create_by(content: $1)
+        @micropost.topic_relationships.create(topic: topic)
+      end
 
       respond_to do |format|
         format.html do

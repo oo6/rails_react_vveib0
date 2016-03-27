@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   belongs_to :micropost, counter_cache: true
   has_many :notifications, as: 'subject', dependent: :delete_all
 
+  has_many :topic_relationships, as: 'subject', dependent: :delete_all
+
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true

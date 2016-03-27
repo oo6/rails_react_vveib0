@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323104550) do
+ActiveRecord::Schema.define(version: 20160327123117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20160323104550) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
+  create_table "topic_relationships", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["subject_type", "subject_id"], name: "index_topic_relationships_on_subject_type_and_subject_id", using: :btree
+    t.index ["topic_id"], name: "index_topic_relationships_on_topic_id", using: :btree
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string   "content"
     t.text     "guide"
@@ -124,4 +134,5 @@ ActiveRecord::Schema.define(version: 20160323104550) do
   add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "topic_relationships", "topics"
 end

@@ -1,12 +1,18 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
-  
+
   def create
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.new comment_params.merge(user: current_user)
     if @comment.save
       @comment.notifications.create(user: @micropost.user, name: 'comment') if current_user != @micropost.user
       @comment.create_mention_notification
+
+      # 创建话题
+      @comment.content.scan(/#([\w]+|[\u4e00-\u9fa5]+)#/) do |match|
+        topic = current_user.topics.find_or_create_by(content: $1)
+        @comment.topic_relationships.create(topic: topic)
+      end
 
       respond_to do |format|
         format.html { redirect_to @micropost }
