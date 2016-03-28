@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  locales:
+    en: "English"
+    zh-CN: "简体中文"
+  layouts:
+    application:
+      logo: "vveib0"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"

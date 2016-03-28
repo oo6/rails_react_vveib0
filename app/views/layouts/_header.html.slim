@@ -8,7 +8,7 @@ header.navbar.navbar-default.navbar-fixed-top
         span class="icon-bar"
       a.navbar-brand.logo href=root_path
         i.fa.fa-weibo
-        | VVeib0
+        = t "layouts.application.logo"
 
     .collapse.navbar-collapse#bs-header-navbar-collapse
       ul.nav.navbar-nav.navbar-right
@@ -59,7 +59,8 @@ header.navbar.navbar-default.navbar-fixed-top
                 a href=settings_binds_path 绑定服务
               li.divider
               li
-                a href=logout_path data-method='delete' 退出
+                a href=logout_path data-method='delete'
+                  = t "layouts.application.sign_out"
           li
             a href="javascript:void(0);" data-toggle="modal" data-target="#micropost-form-modal"
               i.fa.fa-pencil-square
@@ -78,6 +79,8 @@ header.navbar.navbar-default.navbar-fixed-top
           li
             = render 'layouts/search_form'
           li
-            a href=signup_path 注册
+            a href=signup_path
+              = t "layouts.application.sign_up"
           li
-            a href=login_path 登录
+            a href=login_path
+              = t "layouts.application.sign_in"

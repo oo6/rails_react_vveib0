@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper, UsersHelper
   helper_method :page_identifier
 
+  before_action :set_locale
+
   def page_identifier
     "#{self.class.to_s.downcase.gsub('::','-').gsub('controller','')}-page #{action_name}"
   end
@@ -17,5 +19,9 @@ class ApplicationController < ActionController::Base
         flash[:danger] = "请登陆后操作，谢谢！"
         redirect_to login_url
       end
+    end
+
+    def set_locale
+      I18n.locale = current_user.try(:locale) || I18n.default_locale
     end
 end

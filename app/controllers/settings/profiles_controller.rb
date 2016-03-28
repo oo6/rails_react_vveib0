@@ -13,6 +13,6 @@ class Settings::ProfilesController < Settings::ApplicationController
 
   private
     def setting_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :locale)
     end
 end
