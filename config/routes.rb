@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show], concerns: [:likeable] do
     get 'last', on: :collection
 
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :index]
 
     member do
       get 'get_last_five_comments'

@@ -31,6 +31,30 @@
 
         = will_paginate @feed_items
 
+        .modal.fade#expand-micropost-modal aria-hidden="true"
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close type="button" data-dismiss="modal" aria-hidden="true"
+                  i.fa.fa-times
+                h4.modal-title 转发微博
+              .modal-body
+                p test
+                / p.source-micropost
+                /   a href=user_path(source_micropost.user.name)
+                /     | @
+                /     = source_micropost.user.name
+                /     | : 
+                /   span
+                /     = source_micropost.content
+                
+                / = form_for current_user.microposts.new, url: expand_micropost_path(source_micropost), remote: true do |f|
+                /   
+                /   .form-group
+                /     = f.text_area :content, class: 'form-control expand_micropost_content', rows: 3, maxlength: 140, value: "//@#{ micropost.user.name }: #{ micropost.content }"
+                / 
+                /   = f.submit "发送", class: 'btn btn-success', 'data-disable-with' => "发送"
+
 - else
   .center.col-sm-7
     h1 欢迎来到 vveib0

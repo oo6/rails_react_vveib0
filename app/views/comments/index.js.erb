@@ -1,0 +1,8 @@
+$('#micropost-' + <%= @micropost.id %> + '-comments .loader-inner').remove()
+
+$('#micropost-' + <%= @micropost.id %> + '-comments')
+  .append('<%= j render "shared/comment_form" %>')
+  .append('<%= j render @comments %>')
+
+$('#micropost-' + <%= @micropost.id %> + ' .comment-micropost')
+  .data('remote', false)

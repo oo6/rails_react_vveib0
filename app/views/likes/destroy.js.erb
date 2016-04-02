@@ -1,2 +1,9 @@
 Likes.updateLike('<%= @subject.class.name.downcase %>', <%= @subject.id %>, false);
-$("#micropost-<%= @subject.id %> .likes-count").html('<%= @subject.likes.count %>')
+
+if(<%= @subject.likes.count %>) {
+  $("#micropost-<%= @subject.id %> .likes-count").html('<%= @subject.likes.count %>')
+}
+else {
+  $("#micropost-<%= @subject.id %> .likes-count").html('赞')
+}
+$("#micropost-<%= @subject.id %> .fa-thumbs-o-up").removeClass('like-animation')

@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
 
+  def index
+    @micropost = Micropost.find params[:micropost_id]
+    @comments = @micropost.comments.first(5)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.new comment_params.merge(user: current_user)

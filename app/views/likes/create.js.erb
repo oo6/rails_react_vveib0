@@ -1,2 +1,4 @@
 Likes.updateLike('<%= @subject.class.name.downcase %>', <%= @subject.id %>);
+
+$("#micropost-<%= @subject.id %> .fa-thumbs-o-up").addClass('like-animation')
 $("#micropost-<%= @subject.id %> .likes-count").html('<%= @subject.likes.count %>')

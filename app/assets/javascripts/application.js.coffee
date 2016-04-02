@@ -7,6 +7,7 @@
 #= require nprogress/nprogress.js
 #= require sweetalert/dist/sweetalert.min.js
 #= require timeago/jquery.timeago.js
+#= require loaders.css/loaders.css.js
 
 #= require_tree .
 

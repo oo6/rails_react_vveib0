@@ -1,4 +1,4 @@
-$(".micropost-<%= @comment.micropost.id %>-comments").prepend('<%= j render @comment %>')
-$("#comment_content").val('')
+$("#micropost-<%= @comment.micropost.id %>-comments form").after('<%= j render @comment %>')
+$("#micropost-<%= @comment.micropost.id %>-comments #comment_content").val('')
 
 $("#micropost-<%= @comment.micropost.id %> .comments-count").html('<%= @comment.micropost.comments.count %>')

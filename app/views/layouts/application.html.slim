@@ -18,6 +18,8 @@ html
     .container
       - flash.each do |message_type, message|
         .alert class="alert-#{message_type}"
+          button type="button" class="close" data-dismiss="alert" aria-hidden="true"
+            i.fa.fa-times
           = message
       = yield
     = render 'layouts/footer'

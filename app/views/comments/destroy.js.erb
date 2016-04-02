@@ -2,4 +2,9 @@ $('#comment-<%= @comment.id %>').slideUp(function() {
   $(this).remove();
 });
 
-$("#micropost-<%= @comment.micropost.id %> .comments-count").html('<%= @comment.micropost.comments.count %>')
+if(<%= @comment.micropost.comments.count %>) {
+  $("#micropost-<%= @comment.micropost.id %> .comments-count").html('<%= @comment.micropost.comments.count %>')
+}
+else {
+  $("#micropost-<%= @comment.micropost.id %> .comments-count").html('评论')
+}
