@@ -1,3 +1,4 @@
-$(document)
-  .on 'click', '.expand-micropost', ->
-    $('#expand-micropost-modal').modal('show')
+$ ->
+  $('#expand-micropost-modal').on('hidden.bs.modal', ->
+    $('#expand-micropost-modal .modal-body').empty()
+  )

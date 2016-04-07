@@ -33,12 +33,12 @@
 
                 a href=micropost_path(source_micropost)
                   | 评论 
-                  span.comments-count= source_micropost.comments.count
+                  span.source-comments-count=source_micropost.comments.count
                   |  
 
                 a id="like-for-micropost-#{ source_micropost.id }" href=micropost_like_path(source_micropost) data-remote="true" data-method="post"
                   i.fa.fa-thumbs-o-up
-                  span.likes-count= source_micropost.likes.count
+                  span.source-likes-count=source_micropost.likes.count
 
           p.timestamp
             = time_ago_tag(micropost.created_at)
@@ -63,7 +63,7 @@
       
     .panel-footer
       .row
-        a.col-xs-4.expand-micropost href="javascript:void(0);"
+        a.col-xs-4.expand-micropost href=expand_micropost_path(micropost) data-remote='true'
           i.fa.fa-share-square-o
           | 转发
 

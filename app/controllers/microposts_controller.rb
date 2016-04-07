@@ -3,8 +3,8 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
-    micropost_params.merge!(source_id: params[:id]) if params[:id]
-    @micropost = current_user.microposts.new(micropost_params)
+    new_micropost_params = micropost_params.merge(source_id: params[:id]) if params[:id]
+    @micropost = current_user.microposts.new(new_micropost_params)
 
     if @micropost.save
       @micropost.create_mention_notification
@@ -50,24 +50,10 @@ class MicropostsController < ApplicationController
     @comments = @micropost.comments.paginate(page: params[:page])
   end
 
-  def get_last_five_comments
-    comments = Micropost.find(params[:id]).comments.first(5)
-    data = {}
-    comments.each do |comment|
-      user = comment.user
-      data[comment.id] = {
-        content: comment.content,
-        created_at: comment.created_at,
-        user: {
-          id: user.id,
-          name: user.name,
-          portrait_url: portrait_url(user)
-        }
-      }
-    end
-    respond_to do |format|
-      format.json { render json: data }
-    end
+  def expand
+    @micropost = Micropost.find params[:id]
+    @source_micropost_id = @micropost.source ? @micropost.source.id : 0
+    @source_micropost_content = @micropost.source ? @micropost.source.content : ''
   end
 
   private

@@ -51,8 +51,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :index]
 
     member do
-      get 'get_last_five_comments'
       post :expand, to: 'microposts#create'
+      get :expand, to: 'microposts#expand'
     end
   end
 

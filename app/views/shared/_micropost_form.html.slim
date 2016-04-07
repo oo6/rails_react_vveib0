@@ -1,4 +1,4 @@
-= form_for current_user.microposts.new, html: { multipart: true } do |f|
+= form_for current_user.microposts.new, html: { multipart: true }， remote: true do |f|
   / form_for中指定了html: { multipart: true }参数。为了支持文件上传功能,必须指定这个参数。
   = render 'shared/error_messages', object: f.object
 
@@ -12,8 +12,6 @@
   /   = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'micropost_picture'
 
 javascript:
-  $('.micropost-form form').attr('data-remote', true);
-  
   function uploadPrompt(size_in_megabytes) {
     if (size_in_megabytes > 5) {
       swal({

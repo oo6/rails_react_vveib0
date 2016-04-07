@@ -1,0 +1,18 @@
+$('#expand-micropost-modal').modal('show')
+
+if(<%= @micropost.is_expand? %>) {
+  $('#expand-micropost-modal .modal-body')
+    .html('<p class="source-micropost"><%= @source_micropost_content %></p>')
+    .append('<%= j render "shared/micropost_form" %>')
+
+  $('#expand-micropost-modal .micropost_content').val('//@<%= @micropost.user.name %>: <%= @micropost.content %>')
+}
+else {
+  $('#expand-micropost-modal .modal-body')
+    .html('<p class="source-micropost"><%= @micropost.content %></p>')
+    .append('<%= j render "shared/micropost_form" %>')
+
+  $('#expand-micropost-modal .micropost_content').focus()
+}
+
+$('#expand-micropost-modal .new_micropost').attr('action', '/microposts/<%= @source_micropost_id %>/expand')
