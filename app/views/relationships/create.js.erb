@@ -1,4 +1,5 @@
 $(".user-<%= @user.id %> .follow-or-unfollow").html("<%= escape_javascript(render('users/unfollow')) %>")
-$(".user-<%= @user.id %> #followers").html('<%= @user.followers.count %>')
+$(".user-<%= @user.id %> .follow-or-unfollow .btn").addClass('btn-danger')
 
+$(".user-<%= @user.id %> #followers").html('<%= @user.followers.count %>')
 $(".user-<%= current_user.id %> #following").html('<%= current_user.following.count %>')
