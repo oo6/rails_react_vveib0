@@ -3,8 +3,12 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
-    new_micropost_params = micropost_params.merge(source_id: params[:id]) if params[:id]
-    @micropost = current_user.microposts.new(new_micropost_params)
+    if params[:id]
+      new_micropost_params = micropost_params.merge(source_id: params[:id])
+      @micropost = current_user.microposts.new(new_micropost_params)
+    else
+      @micropost = current_user.microposts.new(micropost_params)
+    end
 
     if @micropost.save
       @micropost.create_mention_notification
@@ -13,6 +17,13 @@ class MicropostsController < ApplicationController
       @micropost.content.scan(/#([\w]+|[\u4e00-\u9fa5]+)#/) do |match|
         topic = current_user.topics.find_or_create_by(content: $1)
         @micropost.topic_relationships.create(topic: topic)
+      end
+
+      # 关联图片
+      if params[:pictures]
+        params[:pictures].split(' ').each do |picture|
+          @micropost.pictures.create(key: picture)
+        end
       end
 
       respond_to do |format|
@@ -58,7 +69,7 @@ class MicropostsController < ApplicationController
 
   private
     def micropost_params
-      params.require(:micropost).permit(:content, :picture)
+      params.require(:micropost).permit(:content)
     end
 
     def correct_user

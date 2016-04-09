@@ -18,6 +18,10 @@ default: &default
     # github_id:
     # github_secret:
 
+  qiniu:
+    # access_key:
+    # secret_key:
+
 development:
   <<: *default
   admin_emails:

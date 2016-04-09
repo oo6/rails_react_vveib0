@@ -5,7 +5,11 @@
       
       .panel
         .panel-heading
-          p.title 热门话题
+          p.title
+            | 热门话题
+            a.pull-right href='javascript:void(0)'
+              i.fa.fa-refresh
+
         .panel-body
           - @topics.each do |t|
             p

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328140826) do
+ActiveRecord::Schema.define(version: 20160409064651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 20160328140826) do
     t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject_type_and_subject_id", using: :btree
     t.index ["user_id", "created_at"], name: "index_notifications_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "key"
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["subject_type", "subject_id"], name: "index_pictures_on_subject_type_and_subject_id", using: :btree
   end
 
   create_table "relationships", force: :cascade do |t|

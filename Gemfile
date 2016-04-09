@@ -58,6 +58,8 @@ gem 'ancestry'
 
 gem 'rack-cors'
 
+gem 'qiniu'
+
 group :development do
   gem 'byebug'
 

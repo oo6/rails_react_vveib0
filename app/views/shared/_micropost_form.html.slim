@@ -1,6 +1,8 @@
 = form_for current_user.microposts.new, html: { multipart: true }, remote: true do |f|
   / form_for中指定了html: { multipart: true }参数。为了支持文件上传功能,必须指定这个参数。
   = render 'shared/error_messages', object: f.object
+  = hidden_field_tag :qiniu_upload_token, @qiniu_upload_token
+  = hidden_field_tag :pictures
 
   .form-group
     = f.text_area :content, class: 'form-control micropost_content', rows: 3, maxlength: 140
@@ -8,25 +10,7 @@
   = f.submit "发布", class: "btn btn-success disabled create-micropost"
   p.characterPrompt.pull-right 还可以输入140个字
 
-  / sapn.picture
-  /   = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'micropost_picture'
-
-javascript:
-  function uploadPrompt(size_in_megabytes) {
-    if (size_in_megabytes > 5) {
-      swal({
-        title: "Maximum file size is 5MB. Please choose a smaller file.",
-        type: "warning"
-      });
-    }
-  }
-
-  $('.micropost-form .micropost_picture').bind('change', function() {
-    uploadPrompt(this.files[0].size/1024/1024);
-    $('.micropost-form .create-micropost').removeClass('disabled')
-  });
-
-  $('.modal-body .micropost_picture').bind('change', function() {
-    uploadPrompt(this.files[0].size/1024/1024);
-    $('.modal-body .create-micropost').removeClass('disabled')
-  });
+  label for='micropost_picture'
+    i.fa.fa-picture-o
+  sapn.picture
+    = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'micropost_picture'  

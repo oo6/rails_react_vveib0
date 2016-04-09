@@ -1,23 +1,26 @@
 .micropost
   .gravatar
     border-radius: 100%
+    width: 50px
 
   .delete:hover, .liked
     color: $alert-color
 
   .content
-    margin-left: 95px
+    margin-left: 65px
     position: relative
 
     a:hover
       color: $hover-color
 
     p
-      margin-top: 10px
+      margin: 10px 0
 
-    img
-      margin-top: 10px
-      width: 100%
+    .row
+      padding: 0 5px 0 15px
+      img
+        margin-bottom: 10px
+        padding: 0 10px 0 0
 
     .source-content
       background: #F2F2F5
@@ -36,6 +39,11 @@
 
   .panel-footer
     text-align: center
+
+    a
+      border-right: 1px solid $border-color
+      &:last-child
+        border: none
 
     .like-animation
       animation: like-animation .5s

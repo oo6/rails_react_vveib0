@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
     def set_locale
       I18n.locale = current_user.try(:locale) || I18n.default_locale
     end
+
+    def generate_qiniu_upload_token
+      put_policy = Qiniu::Auth::PutPolicy.new('vveib0')
+      Qiniu::Auth.generate_uptoken(put_policy)
+    end
 end

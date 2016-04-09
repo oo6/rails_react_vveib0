@@ -55,8 +55,11 @@
 
           p.micropost-content
             = content_format(micropost.content)
-          - if micropost.picture?
-            img src=micropost.picture.url alt=""
+          
+          - if micropost.pictures.any?
+            .row
+              = render micropost.pictures, size: micropost.pictures.size
+              
           p.timestamp
             = time_ago_tag(micropost.created_at)
             |  来自 vveib0
