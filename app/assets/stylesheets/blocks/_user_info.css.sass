@@ -1,9 +1,31 @@
 .user-info
   text-align: center
 
-  a:hover
-    color: $hover-color
+  .panel-body
+    padding: 0
+    .avatar-wrapper
+      background: url('http://7xrh5z.com1.z0.glb.clouddn.com/user-info-bg.jpg') 100%
 
-  .gravatar
-    border-radius: 100%
-    margin-bottom: 10px 
+      .avatar
+        border-radius: 100%
+        margin-bottom: 10px
+        width: 60px
+        position: relative
+        top: 30px
+        box-sizing: content-box
+        border: 3px solid rgba(255, 255, 255, 0.5)
+
+    .name
+      margin: 25px 0 5px 0
+      display: block
+
+  .panel-footer
+    border: none
+
+    a
+      border-right: 1px solid $border-color
+      &:last-child
+        border: none
+
+  a:hover
+    display: block

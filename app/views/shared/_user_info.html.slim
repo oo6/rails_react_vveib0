@@ -3,10 +3,12 @@
 .user-info class="user-#{ @user.id }"
   .panel
     .panel-body
-      a href=user_path(@user.name)
-        img.gravatar src=portrait_url(@user) alt=@user.name
-        h3
-          = @user.name
+      div.avatar-wrapper
+        a href=user_path(@user.name)
+          img.avatar src=portrait_url(@user) alt=@user.name
+        
+      a.name href=user_path(@user.name)
+        = @user.name
 
     .panel-footer
       .row
