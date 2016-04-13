@@ -15,6 +15,8 @@ gem 'bcrypt'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'font-awesome-sass'
+
 gem 'carrierwave'
 gem 'mini_magick'
 
