@@ -1,7 +1,7 @@
 module V1
   module Helpers
     def current_user
-      @current_user ||= User.where(access_token: params[:access_token]).first
+      User.find_by(access_token: params[:access_token]) if params[:access_token]
     end
 
     def authenticate!

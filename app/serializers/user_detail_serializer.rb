@@ -3,6 +3,6 @@ class UserDetailSerializer < UserInfoSerializer
   attributes :microposts_count, :following_count, :followers_count, :following
 
   def following
-    current_user.following?(object)
+    current_user.following?(object) if current_user
   end
 end
