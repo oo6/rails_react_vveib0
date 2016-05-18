@@ -8,6 +8,9 @@ module V1
         end
 
         desc "获取用户详细资料"
+        params do
+          optional :access_token, type: String
+        end
         get '', serializer: UserDetailSerializer, root: 'user' do
           render @user
         end
