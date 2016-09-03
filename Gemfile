@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
-gem 'rails', '5.0.0.beta3'
+gem 'rails'
 gem 'puma'
 gem 'pg'
 gem 'slim-rails'
