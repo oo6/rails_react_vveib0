@@ -28,9 +28,6 @@ module VVeib0
     # 在处理 Ajax 的表单中添加真伪令牌
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
-    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
-
     config.active_job.queue_adapter = :sidekiq
   end
 end

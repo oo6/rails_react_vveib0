@@ -31,10 +31,6 @@ gem 'omniauth-github'
 
 gem 'jquery-atwho-rails'
 
-gem 'grape'
-gem 'active_model_serializers'
-gem 'grape-active_model_serializers'
-
 gem 'sidekiq'
 gem 'sinatra', :git => 'git@github.com:sinatra/sinatra.git'
 

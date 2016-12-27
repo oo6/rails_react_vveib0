@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   require 'admin_constraint'
   mount Sidekiq::Web => 'sidekiq', :constraints => AdminConstraint.new
 
-  mount API => '/'
-
   root 'static_pages#home'
 
   get 'help' => 'static_pages#help'
@@ -114,5 +112,11 @@ Rails.application.routes.draw do
     get 'past_year', to: 'dashboard#past_year'
 
     get 'past_year_users_count', to: 'dashboard#past_year_users_count'
+  end
+
+  namespace :api do
+    namespace :v2 do
+      get :hi, to: 'tests#hi'
+    end
   end
 end
