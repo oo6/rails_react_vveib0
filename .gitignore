@@ -21,3 +21,4 @@ node_modules
 
 # Ignore config.
 /config/config.yml
+/config/puma.rb
