@@ -1,5 +1,11 @@
 source 'https://gems.ruby-china.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+
 gem 'rails'
 gem 'puma'
 gem 'pg'
@@ -32,13 +38,15 @@ gem 'omniauth-github'
 gem 'jquery-atwho-rails'
 
 gem 'sidekiq'
-gem 'sinatra', :git => 'git@github.com:sinatra/sinatra.git'
+gem 'sinatra', github: 'sinatra/sinatra'
 
 gem 'ancestry'
 
 gem 'rack-cors'
 
 gem 'qiniu'
+
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development do
   gem 'byebug'

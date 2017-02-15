@@ -119,4 +119,7 @@ Rails.application.routes.draw do
       get :hi, to: 'tests#hi'
     end
   end
+
+  # React on Rails
+  get :react, to: 'react#index'
 end

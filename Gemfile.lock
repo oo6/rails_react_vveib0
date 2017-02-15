@@ -1,6 +1,15 @@
 GIT
-  remote: git@github.com:sinatra/sinatra.git
-  revision: bf2f65a348274c0d819f206f07377d1440910e61
+  remote: https://github.com/rails/webpacker.git
+  revision: 023e5dbda8fd8bbe6e6f24788b0b45a3e72080ff
+  specs:
+    webpacker (0.2)
+      activesupport (>= 5.0)
+      multi_json (~> 1.2)
+      railties (>= 5.0)
+
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 32f416c7b8e5131247dadee4ac848ac42c43c761
   specs:
     rack-protection (2.0.0.beta2)
       rack
@@ -274,6 +283,7 @@ DEPENDENCIES
   turbolinks
   uglifier
   web-console
+  webpacker!
   will_paginate
 
 BUNDLED WITH

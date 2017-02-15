@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title
+      = full_title yield(:title)
+
+  body
+    = yield
+
+    = javascript_pack_tag 'vendor'
+    = javascript_pack_tag 'react'

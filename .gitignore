@@ -13,8 +13,9 @@
 /tmp
 .byebug_history
 
-# Ignore node dependency directory
-node_modules
+# Ignore files compiled by webpacker.
+/public/packs
+/vendor/node_modules
 
 # Ignore images uploads
 /public/uploads
