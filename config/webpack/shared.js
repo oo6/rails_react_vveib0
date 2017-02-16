@@ -28,8 +28,11 @@ module.exports = {
         options: {
           presets: [
             'react',
-            [ 'latest', { 'es2015': { 'modules': false } } ]
-          ]
+            ['latest', { 'es2015': { 'modules': false } }]
+          ],
+          plugins: [
+            ['import', [{ libraryName: "antd", style: 'css' }]],
+          ],
         }
       },
       {
@@ -41,6 +44,7 @@ module.exports = {
           runner: 'DISABLE_SPRING=1 ../bin/rails runner'
         }
       },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader?sourceMap'] },
     ]
   },
 
@@ -49,7 +53,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: [ '.js', '.coffee' ],
+    extensions: ['.js', '.coffee'],
     modules: [
       path.resolve('../app/javascript'),
       path.resolve('../vendor/node_modules')

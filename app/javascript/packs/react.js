@@ -8,13 +8,19 @@
 
 import React from 'react'
 import { render } from 'react-dom'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-class Hello extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}!</div>
-  }
-}
+import Application from '../routes/layouts/application'
+import Login from '../routes/login'
+
+// import '../styles/application.global'
 
 document.addEventListener("DOMContentLoaded", e => {
-  render(<Hello name="React" />, document.getElementById('root'))
+  render((
+    <Router history={ browserHistory }>
+      <Route path="/react" component={ Application }>
+        <IndexRoute component={ Login } />
+      </Route>
+    </Router>
+  ), document.getElementById('root'))
 })

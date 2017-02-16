@@ -47,6 +47,7 @@ gem 'rack-cors'
 gem 'qiniu'
 
 gem 'webpacker', github: 'rails/webpacker'
+gem 'foreman'
 
 group :development do
   gem 'byebug'
