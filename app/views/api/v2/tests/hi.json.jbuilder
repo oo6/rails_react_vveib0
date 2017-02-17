@@ -1,1 +1,1 @@
-json.test "hello world!"
+json.text "hello world!"

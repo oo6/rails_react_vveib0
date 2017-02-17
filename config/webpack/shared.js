@@ -12,7 +12,10 @@ module.exports = {
       map[basename] = entry
       return map
     }, {
-      vendor: ['react', 'react-dom'],
+      vendor: [
+        'react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux',
+        'redux-logger', 'redux-thunk', 'whatwg-fetch',
+      ],
     }
   ),
 
